@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Modelos
 {
-    class Pizza
+    public class Pizza
     {
+        public int IdPizza { get; set; }
+        public String SaborPizza { get; set; }
+
     }
 }

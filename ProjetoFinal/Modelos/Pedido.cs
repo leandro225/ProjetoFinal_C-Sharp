@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Modelos
 {
-    class Pedido
+    public class Pedido
     {
+        
+             public int IdPedido { get; set; }
+             
+             public int DataPedido { get; set; }
+
     }
 }
