@@ -11,7 +11,13 @@ namespace Modelos
         
              public int IdPedido { get; set; }
              
-             public int DataPedido { get; set; }
+             public DateTime DataPedido { get; set; }
+             public Cliente cliente { get; set;  }
+             public List <Pizza> pizza { get; set; }
+
+        
+
+
 
     }
 }
