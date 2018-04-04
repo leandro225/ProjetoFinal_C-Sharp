@@ -10,25 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Pizzaria
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TelaPedido.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TelaPedido : Window
     {
-        public MainWindow()
+        public TelaPedido()
         {
             InitializeComponent();
         }
 
-        private void btnPedido_Click(object sender, RoutedEventArgs e)
+        private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
-            TelaPedido pedido = new TelaPedido();
-            pedido.ShowDialog();
+            this.Close();
         }
     }
 }
