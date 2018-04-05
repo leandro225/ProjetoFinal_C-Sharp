@@ -36,6 +36,7 @@ namespace Pizzaria
             CadastroPizza novoCad = new CadastroPizza();
             novoCad.ShowDialog();
            
+           
         }
     }
 }

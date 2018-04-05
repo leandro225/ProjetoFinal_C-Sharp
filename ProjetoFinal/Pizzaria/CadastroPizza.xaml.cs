@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,22 +20,52 @@ namespace Pizzaria
     /// </summary>
     public partial class CadastroPizza : Window
     {
+        
+
         public CadastroPizza()
         {
             InitializeComponent();
 
-            cmbSabores.Items.Add("Frango");
-            cmbSabores.Items.Add("Palmito");
 
+            Pizza pizzahut = new Pizza();
+
+            pizzahut.IdPizza = 1;
+            pizzahut.SaborPizza = "Calabresa";
+
+
+            Dtgrid.Items.Add(pizzahut);
+
+            Pizza pizzahut2 = new Pizza();
+
+            pizzahut2.IdPizza = 2;
+            pizzahut2.SaborPizza = "Queijo";
+            Dtgrid.Items.Add(pizzahut2);
         }
 
-        
+       
+
         private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
-
+            
         }
-        
+
+        private void btnCadSabor_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtNovoSabor.Text.Equals(""))
+            {
+                MessageBox.Show("Por favor, Insira a Descrição", "Erro!", MessageBoxButton.OK);
+            }
+            else
+            {
+                Pizza novoSabor = new Pizza();
+
+                novoSabor.SaborPizza = txtNovoSabor.Text;
+                Controller.PizzaController.SalvarNovoSabor(novoSabor);
+                Dtgrid.Items.Add(novoSabor);
+                MessageBox.Show("Novo Sabor Cadastrado com sucesso", "Sucesso!", MessageBoxButton.OK);
+                txtNovoSabor.Clear();
+            }
+        }
     }
 }

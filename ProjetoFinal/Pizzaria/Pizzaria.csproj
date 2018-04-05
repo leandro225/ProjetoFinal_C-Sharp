@@ -115,6 +115,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{2fd0b573-f819-4e1c-82b1-97241ae262fc}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelos\Modelos.csproj">
+      <Project>{64CB37C5-0953-4024-A1AC-3C2A76F1D90D}</Project>
+      <Name>Modelos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="img\Fechar.png" />
     <Resource Include="img\logo1.png" />
   </ItemGroup>

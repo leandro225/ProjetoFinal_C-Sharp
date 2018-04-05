@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modelos
+namespace Controller
 {
-    public class Class1
+    public class PedidoController
     {
+
+
     }
 }
