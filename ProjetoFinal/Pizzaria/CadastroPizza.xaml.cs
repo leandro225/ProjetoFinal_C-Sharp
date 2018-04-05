@@ -10,32 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Pizzaria
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CadastroPizza.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CadastroPizza : Window
     {
-        public MainWindow()
+        public CadastroPizza()
         {
             InitializeComponent();
         }
 
-        private void btnPedido_Click(object sender, RoutedEventArgs e)
+        private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
-            TelaPedido pedido = new TelaPedido();
-            pedido.ShowDialog();
-        }
+            this.Close();
 
-        private void btnPizzas_Click(object sender, RoutedEventArgs e)
-        {
-            CadastroPizza novoCad = new CadastroPizza();
-            novoCad.ShowDialog();
-           
+
         }
+        
     }
 }

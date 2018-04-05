@@ -60,9 +60,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CadastroPizza.xaml.cs">
+      <DependentUpon>CadastroPizza.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TelaPedido.xaml.cs">
       <DependentUpon>TelaPedido.xaml</DependentUpon>
     </Compile>
+    <Page Include="CadastroPizza.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,7 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\icons8-cancelar-26.png" />
+    <Resource Include="img\Fechar.png" />
     <Resource Include="img\logo1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
