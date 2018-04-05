@@ -1,0 +1,21 @@
+﻿<Window x:Class="Pizzaria.TelaCliente"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pizzaria"
+        mc:Ignorable="d"
+        Title="TelaCliente" Height="593" Width="954" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" BorderBrush="White" Margin="0">
+    <Grid>
+        <Grid Background="#FF1A2028">
+            <StackPanel Height="30" Margin="0" VerticalAlignment="Top" Background="#FFF5EB29">
+                <Button x:Name="btnFechar" Content="" Width="38" HorizontalAlignment="Right" Foreground="#DDFFFFFF" BorderBrush="{x:Null}" FontSize="10" Click="btnFechar_Click" Margin="0,-4,0,0" Height="38" VerticalAlignment="Stretch">
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Fechar.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+            <Label Content="Cliente" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" FontFamily="Stencil" Foreground="#FF1A2028" FontSize="14"/>
+        </Grid>
+    </Grid>
+</Window>

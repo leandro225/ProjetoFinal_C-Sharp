@@ -63,6 +63,9 @@
     <Compile Include="CadastroPizza.xaml.cs">
       <DependentUpon>CadastroPizza.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TelaCliente.xaml.cs">
+      <DependentUpon>TelaCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TelaPedido.xaml.cs">
       <DependentUpon>TelaPedido.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TelaCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TelaPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -9,7 +9,7 @@
 
     <Grid Background="#FF1A2028">
         <StackPanel Height="30" Margin="0" VerticalAlignment="Top" Background="#FFF5EB29">
-            <Button x:Name="btnFechar" Content="" Width="38" HorizontalAlignment="Right" Foreground="#DDFFFFFF" BorderBrush="{x:Null}" FontSize="10" Click="btnFechar_Click" Margin="0,-4,0,0" Height="38" VerticalAlignment="Stretch">
+            <Button x:Name="btnFechar" Content="" Width="38" HorizontalAlignment="Left" Foreground="#DDFFFFFF" BorderBrush="{x:Null}" FontSize="10" Click="btnFechar_Click" Margin="916,-4,0,0" Height="38" VerticalAlignment="Stretch">
                 <Button.Background>
                     <ImageBrush ImageSource="img/Fechar.png"/>
                 </Button.Background>
