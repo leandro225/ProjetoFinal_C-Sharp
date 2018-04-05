@@ -22,8 +22,13 @@ namespace Pizzaria
         public CadastroPizza()
         {
             InitializeComponent();
+
+            cmbSabores.Items.Add("Frango");
+            cmbSabores.Items.Add("Palmito");
+
         }
 
+        
         private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
