@@ -24,7 +24,7 @@
                 </Button.Background>
             </Button>
         </StackPanel>
-        <Label Content="Cadastrar Novo Sabor" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" FontFamily="Stencil" Foreground="#FF1A2028" FontSize="14"/>
+        <Label Content="Pizzas" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" FontFamily="Stencil" Foreground="#FF1A2028" FontSize="14"/>
         <Label Content="Sabores" HorizontalAlignment="Left" Margin="42,66,0,0" VerticalAlignment="Top" Width="90" Foreground="#DDFFFFFF" FontSize="16" FontFamily="Stencil" RenderTransformOrigin="0.378,0.517"/>
         <Label Content="Cadastrar Novo Sabor" HorizontalAlignment="Left" Margin="502,66,0,0" VerticalAlignment="Top" Width="201" Foreground="#DDFFFFFF" FontSize="16" FontFamily="Stencil"/>
         <Button x:Name="btnCadSabor" Content="Salvar" HorizontalAlignment="Left" Margin="506,151,0,0" VerticalAlignment="Top" Width="195" Background="White" Click="btnCadSabor_Click" Foreground="Black"/>
@@ -47,7 +47,7 @@
             <DataGrid.Columns>
 
                 <DataGridTextColumn Binding="{Binding IdPizza}" Header="ID" Width="50" SortDirection="Ascending"/>
-                <DataGridTextColumn Binding="{Binding SaborPizza}" Header="DEscrição" Width="350"/>
+                <DataGridTextColumn Binding="{Binding SaborPizza}" Header="Descrição" Width="350"/>
             </DataGrid.Columns>
 
         </DataGrid>
