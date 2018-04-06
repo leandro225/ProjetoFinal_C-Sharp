@@ -1,4 +1,5 @@
 # ProjetoFinal_C-Sharp
-Projeto final da Disciplina de C-Sharp
+
+Projeto realizado pelos alunos Odirlei , Leandro
 
 
