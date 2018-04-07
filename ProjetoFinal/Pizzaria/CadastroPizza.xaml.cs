@@ -70,7 +70,7 @@ namespace Pizzaria
             {
                 int teste = int.Parse(txtId.Text);
                 Controller.PizzaController.ExcluirPizza(teste);
-
+                MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
                 txtId.Clear();
 
             }
