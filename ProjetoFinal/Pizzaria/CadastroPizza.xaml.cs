@@ -20,34 +20,25 @@ namespace Pizzaria
     /// </summary>
     public partial class CadastroPizza : Window
     {
-        
+        List<Pizza> ListaPizzas = new List<Pizza>();
 
         public CadastroPizza()
         {
             InitializeComponent();
 
+            ListaPizzas = Controller.PizzaController.retornaSabores();
 
-            Pizza pizzahut = new Pizza();
+            foreach (var x in ListaPizzas)
+            {
+                DtGrid.Items.Add(x);
+            }
 
-            pizzahut.IdPizza = 1;
-            pizzahut.SaborPizza = "Calabresa";
-
-
-            Dtgrid.Items.Add(pizzahut);
-
-            Pizza pizzahut2 = new Pizza();
-
-            pizzahut2.IdPizza = 2;
-            pizzahut2.SaborPizza = "Queijo";
-            Dtgrid.Items.Add(pizzahut2);
         }
-
-       
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            
+
         }
 
         private void btnCadSabor_Click(object sender, RoutedEventArgs e)
@@ -62,10 +53,34 @@ namespace Pizzaria
 
                 novoSabor.SaborPizza = txtNovoSabor.Text;
                 Controller.PizzaController.SalvarNovoSabor(novoSabor);
-                Dtgrid.Items.Add(novoSabor);
+                DtGrid.Items.Add(novoSabor);
+
                 MessageBox.Show("Novo Sabor Cadastrado com sucesso", "Sucesso!", MessageBoxButton.OK);
                 txtNovoSabor.Clear();
+
+
             }
         }
+
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            try
+            {
+                int teste = int.Parse(txtId.Text);
+                Controller.PizzaController.ExcluirPizza(teste);
+
+                txtId.Clear();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Por favor, Insira o id", "Erro!", MessageBoxButton.OK);
+
+            }
+
+        }
+
     }
 }

@@ -16,5 +16,6 @@
             </Button>
         </StackPanel>
         <Label Content="Pedido" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" FontFamily="Stencil" Foreground="#FF1A2028" FontSize="14"/>
+        <StackPanel HorizontalAlignment="Left" Height="380" Margin="34,68,0,0" VerticalAlignment="Top" Width="831"/>
     </Grid>
 </Window>

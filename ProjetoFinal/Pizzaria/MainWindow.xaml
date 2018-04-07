@@ -10,8 +10,8 @@
     <Grid Background="#FF252E3B">
         <StackPanel Background="#FF1A2028" Margin="0,44,0,0" Width="200" HorizontalAlignment="Left">
             <Button x:Name="btnPizzas" Content="Pizzas" Margin="0,80,0,0" Width="200" BorderBrush="{x:Null}" Foreground="#DDFFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Stencil" FontSize="16" Height="47" FontWeight="Normal" Click="btnPizzas_Click"/>
-            <Button x:Name="btnCliente" Content="Clientes" Width="200" BorderBrush="{x:Null}" Foreground="#DDDADADA" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Stencil" FontSize="16" Height="46" Click="btnCliente_Click"/>
-            <Button x:Name="btnPedido" Content="Pedido" Width="200"  BorderBrush="{x:Null}" Foreground="#DDDADADA" Click="btnPedido_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Stencil" FontSize="16" Height="47"/>
+            <Button x:Name="btnCliente" Content="Clientes" Width="200" BorderBrush="{x:Null}" Foreground="#DDFFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Stencil" FontSize="16" Height="46" Click="btnCliente_Click"/>
+            <Button x:Name="btnPedido" Content="Pedido" Width="200"  BorderBrush="{x:Null}" Foreground="#DDFFFFFF" Click="btnPedido_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Stencil" FontSize="16" Height="47"/>
         </StackPanel>
         <StackPanel Height="44" VerticalAlignment="Top" Background="#FF1A2028"/>
         <Image Height="98" Margin="24,12,0,0" Width="146" HorizontalAlignment="Left" VerticalAlignment="Top" Source="img/logo1.png">
