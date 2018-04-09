@@ -15,7 +15,7 @@
                     </Button.Background>
                 </Button>
             </StackPanel>
-            <Label Content="Cliente" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" FontFamily="Stencil" Foreground="#FF1A2028" FontSize="14"/>
+            <Label Content="Clientes" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" FontFamily="Stencil" Foreground="#FF1A2028" FontSize="14"/>
         </Grid>
     </Grid>
 </Window>

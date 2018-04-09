@@ -26,16 +26,36 @@
 
         <!--DADOS DO CLIENTE-->
         <Label Content="Dados do Cliente" HorizontalAlignment="Left" Margin="40,196,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Stencil"/>
-        <TextBlock x:Name="txtNome" HorizontalAlignment="Left" Margin="110,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Foreground="#FF2945F5" FontFamily="Century Gothic" FontStyle="Italic"/>
+        <TextBlock x:Name="blockNome" HorizontalAlignment="Left" Margin="110,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
         <Label Content="Nome:" HorizontalAlignment="Left" Margin="40,230.4,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <TextBlock x:Name="txtFone" HorizontalAlignment="Left" Margin="110,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Foreground="#FF2945F5" FontFamily="Century Gothic" FontStyle="Italic"/>
+        <TextBlock x:Name="blockFone" HorizontalAlignment="Left" Margin="110,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
         <Label Content="Telefone:" HorizontalAlignment="Left" Margin="40,256,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <TextBlock x:Name="txtEnd" HorizontalAlignment="Left" Margin="110,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Foreground="#FF2945F5" FontFamily="Century Gothic" FontStyle="Italic"/>
+        <TextBlock x:Name="blockEnd" HorizontalAlignment="Left" Margin="110,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
         <Label Content="Endereço:" HorizontalAlignment="Left" Margin="40,280,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <TextBlock x:Name="txtNum" HorizontalAlignment="Left" Margin="110,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Foreground="#FF2945F5" FontFamily="Century Gothic" FontStyle="Italic"/>
+        <TextBlock x:Name="blockNr" HorizontalAlignment="Left" Margin="110,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
         <Label Content="Número:" HorizontalAlignment="Left" Margin="40,304,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <TextBlock x:Name="txtBairro" HorizontalAlignment="Left" Margin="110,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Foreground="#FF2945F5" FontFamily="Century Gothic" FontStyle="Italic"/>
+        <TextBlock x:Name="blockBairro" HorizontalAlignment="Left" Margin="110,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
         <Label Content="Bairro:" HorizontalAlignment="Left" Margin="40,330,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <Button  x:Name="btnSalvarCli" Content="Salvar Cliente" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Background="#FF252E3B" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4" Margin="40,383,0,0"/>
+
+
+        <Label Content="Tamanho" HorizontalAlignment="Left" Margin="319,50,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Stencil" RenderTransformOrigin="0.53,-0.042"/>
+
+        <!--Radio Buttom de tamanhos-->
+        <RadioButton  x:Name="rbP" Content="Pequena" HorizontalAlignment="Left" Margin="319,87,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Century Gothic" Background="#FF007ACC" BorderBrush="#FF007ACC" Cursor="Hand" IsHitTestVisible="True" Checked="rbP_Checked"/>
+        <RadioButton  x:Name="rbM" Content="Média" HorizontalAlignment="Left" Margin="415,87,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Century Gothic" Background="#FF007ACC" BorderBrush="#FF007ACC" Cursor="Hand" Checked="rbM_Checked"/>
+        <RadioButton  x:Name="rbG" Content="Grande" HorizontalAlignment="Left" Margin="499,87,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Century Gothic" Background="#FF007ACC" BorderBrush="#FF007ACC" Cursor="Hand" Checked="rbG_Checked"/>
+        <!--Combo Box de sabores-->
+        <Label Content="Sabor" HorizontalAlignment="Left" Margin="319,133,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Stencil"/>
+        <ComboBox x:Name="cmbSabores" HorizontalAlignment="Left" Margin="319,157,0,0" VerticalAlignment="Top" Width="257" Foreground="White" Background="{x:Null}" BorderBrush="#FFF5EB29" BorderThickness="0,0,0,2" SelectionChanged="cmbSabores_SelectionChanged" Cursor="Hand"/>
+
+        <ComboBox x:Name="cmbSabores2" HorizontalAlignment="Left" Margin="319,211,0,0" VerticalAlignment="Top" Width="257" Foreground="White" Background="{x:Null}" BorderBrush="#FFF5EB29" BorderThickness="0,0,0,2" SelectionChanged="cmbSabores2_SelectionChanged_1" Cursor="Hand"/>
+        <Label IsEnabled="True" x:Name="lblSabor2" Content="Sabor 2" HorizontalAlignment="Left" Margin="319,187,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Stencil" IsHitTestVisible="True"/>
+        <ComboBox x:Name="cmbSabores3" HorizontalAlignment="Left" Margin="319,265,0,0" VerticalAlignment="Top" Width="257" Foreground="White" Background="{x:Null}" BorderBrush="#FFF5EB29" BorderThickness="0,0,0,2" SelectionChanged="cmbSabores3_SelectionChanged_1" Cursor="Hand"/>
+        <Label IsEnabled="True" x:Name="lblSabor3" Content="Sabor 3" HorizontalAlignment="Left" Margin="319,241,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Stencil"/>
+
+        <TextBlock x:Name="tbSabor"  HorizontalAlignment="Left" Margin="319,324,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 1"/>
+        <TextBlock x:Name="tbSabor2"  HorizontalAlignment="Left" Margin="319,357,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 2"/>
+        <TextBlock x:Name="tbSabor3"  HorizontalAlignment="Left" Margin="319,389,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 3"/>
+
     </Grid>
 </Window>

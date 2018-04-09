@@ -64,14 +64,26 @@ namespace Pizzaria
 
         private void btnExcluir_Click(object sender, RoutedEventArgs e)
         {
-
-
+            bool resp;
             try
             {
                 int teste = int.Parse(txtId.Text);
-                Controller.PizzaController.ExcluirPizza(teste);
-                MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
-                txtId.Clear();
+                resp= Controller.PizzaController.ExcluirPizza(teste);
+                if (resp.Equals(true))
+                {
+                    MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
+                    txtId.Clear();
+                    this.Close();
+                        
+                }
+                else
+                {
+                    MessageBox.Show(" ID não encontrado !!!", "Erro", MessageBoxButton.OK);
+                    txtId.Clear();
+                }
+
+              
+                
 
             }
             catch (Exception)

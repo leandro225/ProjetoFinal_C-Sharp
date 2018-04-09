@@ -23,6 +23,7 @@ namespace Pizzaria
         public CadastroCliente()
         {
             InitializeComponent();
+            txtTelefone.Text = Controller.PedidoController.RetornaTelefone();
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
@@ -42,9 +43,11 @@ namespace Pizzaria
                 novoCli.Numero = int.Parse(txtNumero.Text);
                 novoCli.Bairro = txtBairro.Text;
 
-                //Inserir conexão com a controller de cadastrar na lista de clientes
-
+                Controller.ClienteController.SalvarCliente(novoCli);           
                 MessageBox.Show("Cliente cadastrado com sucesso!", "Suecesso");
+                this.Close();
+
+                
 
             }
             catch (Exception)

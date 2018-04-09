@@ -29,7 +29,7 @@ namespace Controller
             return PizzaList;
         }
 
-        public static void ExcluirPizza(int idPizza)
+        public static bool ExcluirPizza(int idPizza)
         {
             foreach (var pizza in new List<Pizza>(PizzaList))
             {
@@ -37,8 +37,11 @@ namespace Controller
                 {
                     ultimoID -= ultimoID;
                     PizzaList.Remove(pizza);
+                    return true;
                 }
+               
             }
+            return false;
         }
 
 

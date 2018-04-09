@@ -30,18 +30,18 @@
         <Button  x:Name="btnCadSabor" Content="Salvar" HorizontalAlignment="Left" Margin="506,151,0,0" VerticalAlignment="Top" Width="195" Background="#FF252E3B" Click="btnCadSabor_Click" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4"/>
 
 
-        <TextBox Padding="1" x:Name="txtNovoSabor" materialDesign:HintAssist.Hint="Digite aqui a descrição do sabor" HorizontalAlignment="Left" Height="30" Margin="507,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="349" Background="White"/>
+        <TextBox Padding="1" x:Name="txtNovoSabor" materialDesign:HintAssist.Hint="Digite aqui a descrição" HorizontalAlignment="Left" Height="30" Margin="507,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="349" Background="{x:Null}" BorderBrush="#FFF5EB29" Foreground="#DDFFFFFF" SelectionBrush="#FF0078D7" CaretBrush="#FFF5EB29" CharacterCasing="Upper"/>
 
         <!--DATA GRID-->
-        <DataGrid SelectionMode="Extended" x:Name="DtGrid" HorizontalGridLinesBrush="#FF1A2028" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True"  CanUserResizeRows="False" Height="274" Margin="30,110,526,209">
+        <DataGrid SelectionMode="Extended" x:Name="DtGrid" HorizontalGridLinesBrush="#FF1A2028" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True"  CanUserResizeRows="False" Height="274" Margin="30,110,526,209" Background="#B2FFFFFF">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="teste"  Binding="{Binding IdPizza}" Header="ID" Width="50" SortDirection="Ascending"/>
+                <DataGridTextColumn x:Name="teste" Binding="{Binding IdPizza}" Header="ID" Width="50" SortDirection="Ascending"/>
                 <DataGridTextColumn  Binding="{Binding SaborPizza}" Header="Descrição" Width="*" SortDirection="Ascending" />
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Excluir Pizza" HorizontalAlignment="Left" Margin="506,218,0,0" VerticalAlignment="Top" Width="202" Foreground="#DDFFFFFF" FontSize="16" FontFamily="Stencil"/>
         <Button  x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="510,302,0,0" VerticalAlignment="Top" Width="196" Background="#FF252E3B" Click="btnExcluir_Click" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4"/>
-        <TextBox Padding="1" x:Name="txtId" materialDesign:HintAssist.Hint="Insira o ID" HorizontalAlignment="Left" Height="30" Margin="512,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Background="White"/>
+        <TextBox Padding="1" x:Name="txtId" materialDesign:HintAssist.Hint="Insira o ID" HorizontalAlignment="Left" Height="30" Margin="512,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Background="{x:Null}" BorderBrush="#FFF5EB29" CaretBrush="#FFF5EB29" Foreground="#DDFFFFFF"/>
 
 
 
