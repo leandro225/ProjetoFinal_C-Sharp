@@ -17,6 +17,8 @@ namespace Controller
             Clientes.Add(novoCli);
         }
 
+       
+
         public static Cliente PesquisaCliPorTel(int tel)
         {
             foreach (var x in Clientes)
@@ -27,6 +29,10 @@ namespace Controller
                 }
             }
             return null;
+        }
+        public static List<Cliente> retornaClientes()
+        {
+            return Clientes;
         }
 
 

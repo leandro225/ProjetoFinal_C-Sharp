@@ -20,9 +20,18 @@ namespace Pizzaria
     /// </summary>
     public partial class TelaCliente : Window
     {
+        List<Cliente> ClienteLista = new List<Cliente>();
+
         public TelaCliente()
         {
             InitializeComponent();
+            ClienteLista = Controller.ClienteController.retornaClientes();
+
+            foreach (var x in ClienteLista)
+            {
+                DtGrid.Items.Add(x);
+            }
+
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
