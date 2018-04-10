@@ -21,6 +21,7 @@ namespace Pizzaria
     public partial class CadastroPizza : Window
     {
         List<Pizza> ListaPizzas = new List<Pizza>();
+        int CellValue;
 
         public CadastroPizza()
         {
@@ -32,7 +33,7 @@ namespace Pizzaria
             {
                 DtGrid.Items.Add(x);
             }
-
+         
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
@@ -67,32 +68,39 @@ namespace Pizzaria
             bool resp;
             try
             {
-                int teste = int.Parse(txtId.Text);
-                resp= Controller.PizzaController.ExcluirPizza(teste);
+               
+                resp= Controller.PizzaController.ExcluirPizza(CellValue);
+
                 if (resp.Equals(true))
                 {
                     MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
-                    txtId.Clear();
-                    this.Close();
-                        
+                   int selectedIndex = DtGrid.SelectedIndex;
+                   DtGrid.Items.RemoveAt(selectedIndex);
+                  
+                    
                 }
                 else
                 {
-                    MessageBox.Show(" ID não encontrado !!!", "Erro", MessageBoxButton.OK);
-                    txtId.Clear();
-                }
-
-              
-                
-
+                    MessageBox.Show("Por Favor, Selecione um Item !!!", "Erro", MessageBoxButton.OK);
+                   
+                }              
             }
             catch (Exception)
             {
-                MessageBox.Show("Por favor, Insira o id", "Erro!", MessageBoxButton.OK);
+               
 
             }
 
         }
-
+        //pega o valor selecionado da grid de acordo com o index 
+        private void DtGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {           
+                DataGrid dataGrid = sender as DataGrid;
+                DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
+                DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
+                CellValue = int.Parse(((TextBlock)RowColumn.Content).Text);
+               // MessageBox.Show(CellValue.ToString());
+            
+        }
     }
 }

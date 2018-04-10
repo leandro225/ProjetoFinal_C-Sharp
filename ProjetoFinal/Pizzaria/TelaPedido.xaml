@@ -53,9 +53,19 @@
         <ComboBox x:Name="cmbSabores3" HorizontalAlignment="Left" Margin="319,265,0,0" VerticalAlignment="Top" Width="257" Foreground="White" Background="{x:Null}" BorderBrush="#FFF5EB29" BorderThickness="0,0,0,2" SelectionChanged="cmbSabores3_SelectionChanged_1" Cursor="Hand"/>
         <Label IsEnabled="True" x:Name="lblSabor3" Content="Sabor 3" HorizontalAlignment="Left" Margin="319,241,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Stencil"/>
 
-        <TextBlock x:Name="tbSabor"  HorizontalAlignment="Left" Margin="319,324,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 1"/>
-        <TextBlock x:Name="tbSabor2"  HorizontalAlignment="Left" Margin="319,357,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 2"/>
-        <TextBlock x:Name="tbSabor3"  HorizontalAlignment="Left" Margin="319,389,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 3"/>
+        <TextBlock x:Name="tbSabor"  HorizontalAlignment="Left" Margin="686,79,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 1"/>
+        <TextBlock x:Name="tbSabor2"  HorizontalAlignment="Left" Margin="686,112,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 2"/>
+        <TextBlock x:Name="tbSabor3"  HorizontalAlignment="Left" Margin="686,144,0,0" VerticalAlignment="Top" Width="144" Background="{x:Null}" Foreground="#DDFFFFFF" Text="Sabor 3"/>
+
+
+        <CheckBox x:Name="cbBorda" Content="Borda Recheada" HorizontalAlignment="Left" Margin="322,365,0,0" VerticalAlignment="Top" Foreground="White" Cursor="Hand" FontFamily="Century Gothic" Checked="cbBorda_Checked"/>
+        <CheckBox x:Name="cbazeitona" Content="Azeitona" HorizontalAlignment="Left" Margin="322,397,0,0" VerticalAlignment="Top" Foreground="White" Cursor="Hand" FontFamily="Century Gothic" Checked="cbazeitona_Checked"/>
+        <Label Content="Adicionais" HorizontalAlignment="Left" Margin="319,327,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Stencil" RenderTransformOrigin="0.53,-0.042"/>
+        <CheckBox x:Name="cbBacon" Content="Bacon" HorizontalAlignment="Left" Margin="322,429,0,0" VerticalAlignment="Top" Foreground="White" Cursor="Hand" FontFamily="Century Gothic" Checked="cbBacon_Checked"/>
+        <CheckBox Content="Cheddar" HorizontalAlignment="Left" Margin="456,365,0,0" VerticalAlignment="Top" Foreground="White" Cursor="Hand" FontFamily="Century Gothic"/>
+        <CheckBox Content="Catupiry" HorizontalAlignment="Left" Margin="456,397,0,0" VerticalAlignment="Top" Foreground="White" Cursor="Hand" FontFamily="Century Gothic"/>
+        <CheckBox Content="Gorgonzola" HorizontalAlignment="Left" Margin="456,429,0,0" VerticalAlignment="Top" Foreground="White" Cursor="Hand" FontFamily="Century Gothic"/>
+        <TextBlock x:Name="tbcheck" HorizontalAlignment="Left" Margin="708,241,0,0" TextWrapping="Wrap" Text="Check" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>

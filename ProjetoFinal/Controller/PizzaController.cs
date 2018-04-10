@@ -18,7 +18,6 @@ namespace Controller
         {
             int id = ultimoID + 1;
             ultimoID = id;
-
             novo.IdPizza = id;
             PizzaList.Add(novo);
 

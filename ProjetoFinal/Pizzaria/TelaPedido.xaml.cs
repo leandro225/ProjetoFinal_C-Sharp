@@ -26,7 +26,7 @@ namespace Pizzaria
         public TelaPedido()
         {
             InitializeComponent();
-
+            rbP.IsChecked = true;
             
             ListaSabores= Controller.PizzaController.retornaSabores();
 
@@ -35,14 +35,9 @@ namespace Pizzaria
                 cmbSabores.Items.Add(x.SaborPizza);
                 cmbSabores2.Items.Add(x.SaborPizza);
                 cmbSabores3.Items.Add(x.SaborPizza);
-            }
-
-            
-            
-            
-          
+            }   
         }
-
+        //Botão de Fechar a janela
         private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -135,6 +130,22 @@ namespace Pizzaria
 
         }
 
-        
+        private void cbBorda_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbBorda.IsChecked==true)
+            
+                tbcheck.Text = cbBorda.Content.ToString();
+        }
+
+        private void cbazeitona_Checked(object sender, RoutedEventArgs e)
+        {
+            tbcheck.Text = cbazeitona.Content.ToString();
+        }
+
+        private void cbBacon_Checked(object sender, RoutedEventArgs e)
+        {
+            tbcheck.Text = cbBacon.Content.ToString();
+        }
+
     }
 }
