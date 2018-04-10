@@ -28,8 +28,8 @@
         <Label Content="Dados do Cliente" HorizontalAlignment="Left" Margin="40,196,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Stencil"/>
         <TextBlock x:Name="blockNome" HorizontalAlignment="Left" Margin="110,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
         <Label Content="Nome:" HorizontalAlignment="Left" Margin="40,230.4,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <TextBlock x:Name="blockFone" HorizontalAlignment="Left" Margin="110,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
-        <Label Content="Telefone:" HorizontalAlignment="Left" Margin="40,256,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
+        <TextBlock x:Name="blockFone" HorizontalAlignment="Left" Margin="110,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Foreground="#B2F5EB29" FontFamily="Century Gothic"  FontStyle="Italic"/>
+        <Label Content="Telefone:" HorizontalAlignment="Left" Margin="40,256,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic"  FontWeight="Bold" />
         <TextBlock x:Name="blockEnd" HorizontalAlignment="Left" Margin="110,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
         <Label Content="Endereço:" HorizontalAlignment="Left" Margin="40,280,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
         <TextBlock x:Name="blockNr" HorizontalAlignment="Left" Margin="110,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Foreground="#B2F5EB29" FontFamily="Century Gothic" FontStyle="Italic"/>
