@@ -21,6 +21,7 @@ namespace Pizzaria
     public partial class TelaCliente : Window
     {
         List<Cliente> ClienteLista = new List<Cliente>();
+        int CellValue;
 
         public TelaCliente()
         {
@@ -39,6 +40,47 @@ namespace Pizzaria
             this.Close();
         }
 
-      
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+            
+                bool resp;
+                try
+                {
+
+                    resp = Controller.ClienteController.ExcluirCliente(CellValue);
+
+                    if (resp.Equals(true))
+                    {
+                        MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
+                        int selectedIndex = DtGrid.SelectedIndex;
+                        DtGrid.Items.RemoveAt(selectedIndex);
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por Favor, Selecione um Item !!!", "Erro", MessageBoxButton.OK);
+
+                    }
+                }
+                catch (Exception)
+                {
+
+
+                }
+
+
+            
+        }
+        private void DtGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dataGrid = sender as DataGrid;
+            DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
+            DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
+            CellValue = int.Parse(DtGrid.SelectedValue.ToString());
+            // MessageBox.Show(CellValue.ToString());
+
+        }
+
     }
-}
+    }

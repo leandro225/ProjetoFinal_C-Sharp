@@ -34,7 +34,20 @@ namespace Controller
         {
             return Clientes;
         }
+        public static bool ExcluirCliente(int telefone)
+        {
+            foreach (var cliente in new List<Cliente>(Clientes))
+            {
+                if (cliente.Telefone == telefone)
+                {
+                    
+                    Clientes.Remove(cliente);
+                    return true;
+                }
 
+            }
+            return false;
+        }
 
     }
 }
