@@ -21,11 +21,13 @@ namespace Pizzaria
     public partial class CadastroPizza : Window
     {
         List<Pizza> ListaPizzas = new List<Pizza>();
+
         int CellValue;
 
         public CadastroPizza()
         {
             InitializeComponent();
+
 
             ListaPizzas = Controller.PizzaController.retornaSabores();
 
@@ -33,7 +35,7 @@ namespace Pizzaria
             {
                 DtGrid.Items.Add(x);
             }
-         
+
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
@@ -68,39 +70,72 @@ namespace Pizzaria
             bool resp;
             try
             {
-               
-                resp= Controller.PizzaController.ExcluirPizza(CellValue);
+
+                resp = Controller.PizzaController.ExcluirPizza(CellValue);
 
                 if (resp.Equals(true))
                 {
                     MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
-                   int selectedIndex = DtGrid.SelectedIndex;
-                   DtGrid.Items.RemoveAt(selectedIndex);
-                  
-                    
+                    int selectedIndex = DtGrid.SelectedIndex;
+                    DtGrid.Items.RemoveAt(selectedIndex);
+
+
                 }
                 else
                 {
                     MessageBox.Show("Por Favor, Selecione um Item !!!", "Erro", MessageBoxButton.OK);
-                   
-                }              
+
+                }
             }
             catch (Exception)
             {
-               
+
 
             }
 
         }
         //pega o valor selecionado da grid de acordo com o index 
         private void DtGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {           
-                DataGrid dataGrid = sender as DataGrid;
-                DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
-                DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
-                CellValue = int.Parse(((TextBlock)RowColumn.Content).Text);
-               // MessageBox.Show(CellValue.ToString());
-            
+        {
+            // DataGrid dataGrid = sender as DataGrid;
+            // DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
+            // DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
+            // CellValue = int.Parse(((TextBlock)RowColumn.Content).Text);
+            // MessageBox.Show(CellValue.ToString());
+
+            CellValue = int.Parse(DtGrid.SelectedValue.ToString());
+
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+
+            CellValue = int.Parse(DtGrid.SelectedValue.ToString());
+            txtEditarItem.Visibility = Visibility.Visible;
+            btnSalvarAlt.Visibility = Visibility.Visible;
+            txtEditarItem.Text = Controller.PizzaController.retornaDescricao(CellValue);
+
+
+
+        }
+
+        private void btnSalvarAlt_Click(object sender, RoutedEventArgs e)
+        {
+            Controller.PizzaController.alterarDados(CellValue, txtEditarItem.Text);
+
+            List<Pizza> ListaPizzasnew = new List<Pizza>();
+            ListaPizzasnew = Controller.PizzaController.retornaSabores();
+
+            foreach (var x in ListaPizzasnew)
+            {
+                DtGrid.Items.Add(x);
+            }
+
+
+
+
+            txtEditarItem.Visibility = Visibility.Hidden;
+            btnSalvarAlt.Visibility = Visibility.Hidden;
         }
     }
 }

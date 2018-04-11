@@ -12,7 +12,7 @@ namespace Controller
 
         public static List<Pizza> PizzaList = new List<Pizza>();
         static int ultimoID = 0;
-       
+
 
         public static void SalvarNovoSabor(Pizza novo)
         {
@@ -32,17 +32,38 @@ namespace Controller
         {
             foreach (var pizza in new List<Pizza>(PizzaList))
             {
-                if (pizza.IdPizza==idPizza)
+                if (pizza.IdPizza == idPizza)
                 {
-                    ultimoID -= ultimoID;
+
                     PizzaList.Remove(pizza);
                     return true;
                 }
-               
+
             }
             return false;
         }
 
+        public static string retornaDescricao(int id)
+        {
+            foreach (var item in PizzaList)
+            {
+                if (id == item.IdPizza)
+                {
+                    return item.SaborPizza;
+                }
+            }
+            return null;
+        }
 
+        public static void alterarDados(int id, string novaDesc)
+        {
+            foreach (var x in PizzaList)
+            {
+                if (x.IdPizza == id)
+                {
+                    x.SaborPizza = novaDesc;
+                }
+            }
+        }
     }
 }
