@@ -30,6 +30,27 @@ namespace Controller
             }
             return null;
         }
+        public static string retornaDescricao(int telefone)
+        {
+            foreach (var item in Clientes)
+            {
+                if (telefone == item.Telefone)
+                {
+                    return item.Nome;
+                }
+            }
+            return null;
+        }
+        public static void alterarDados(int telefone, string novaDesc)
+        {
+            foreach (var x in Clientes)
+            {
+                if (x.Telefone == telefone)
+                {
+                    x.Nome = novaDesc;
+                }
+            }
+        }
         public static List<Cliente> retornaClientes()
         {
             return Clientes;

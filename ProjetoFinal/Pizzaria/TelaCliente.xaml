@@ -1,4 +1,5 @@
 ﻿<Window x:Class="Pizzaria.TelaCliente"
+
           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -16,7 +17,8 @@
         mc:Ignorable="d"
         
     Title="TelaCliente"  Height="593" Width="954" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Margin="0">
-    <Grid Margin="0,0,0,122">
+    
+    <Grid>
         <StackPanel Height="30" Margin="0" VerticalAlignment="Top" Background="#FFF5EB29">
             <Button x:Name="btnFechar" Content="" Width="38" HorizontalAlignment="Right" Foreground="#DDFFFFFF" BorderBrush="{x:Null}" FontSize="10" Click="btnFechar_Click" Margin="0,-4,0,0" Height="38" VerticalAlignment="Stretch">
                 <Button.Background>
@@ -25,7 +27,7 @@
             </Button>
         </StackPanel>
         <Label Content="Clientes" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" FontFamily="Stencil" Foreground="#FF1A2028" FontSize="14"/>
-        <DataGrid SelectedValuePath="Telefone" x:Name="DtGrid" HorizontalGridLinesBrush="{x:Null}" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True"  CanUserResizeRows="False" Margin="0,30,0,-34" Background="{x:Null}" SelectionChanged="DtGrid_SelectionChanged" VerticalGridLinesBrush="{x:Null}" AutoGenerateColumns="False" GridLinesVisibility="None" CanUserDeleteRows="False" BorderBrush="{x:Null}">
+        <DataGrid SelectedValuePath="Telefone" x:Name="DtGrid" HorizontalGridLinesBrush="{x:Null}" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True"  CanUserResizeRows="False" Margin="0,30,0,118" Background="{x:Null}" SelectionChanged="DtGrid_SelectionChanged" VerticalGridLinesBrush="{x:Null}" AutoGenerateColumns="False" GridLinesVisibility="None" CanUserDeleteRows="False" BorderBrush="{x:Null}">
             <DataGrid.Columns>
                 
                 <DataGridTextColumn  Binding="{Binding Nome}" Header="Nome" Width="*" SortDirection="Ascending"  />
@@ -35,9 +37,11 @@
                 <DataGridTextColumn  Binding="{Binding Bairro}" Header="Bairro" Width="*" SortDirection="Ascending" />
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Excluir Cliente" HorizontalAlignment="Left" Margin="6,510,0,-68" VerticalAlignment="Top" Width="202" Foreground="#DDFFFFFF" FontSize="16" FontFamily="Stencil"/>
-        <Button  x:Name="btnExcluir" Content="Excluir Selecionado" HorizontalAlignment="Left" Margin="6,544,0,-105" VerticalAlignment="Top" Width="178" Background="#FF252E3B" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4" Click="btnExcluir_Click"/>
-        <Label Content="Editar Cliente" HorizontalAlignment="Left" Margin="213,510,0,-68" VerticalAlignment="Top" Width="202" Foreground="#DDFFFFFF" FontSize="16" FontFamily="Stencil"/>
-        <Button  x:Name="btnEditarCli" Content="Editar Selecionado" HorizontalAlignment="Left" Margin="213,544,0,-105" VerticalAlignment="Top" Width="178" Background="#FF252E3B" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4" Click="btnExcluir_Click"/>
+       
+        <Button  x:Name="btnExcluir" Content="Excluir Selecionado" HorizontalAlignment="Left" Margin="6,544,0,-105" VerticalAlignment="Top" Width="178" Background="#FF252E3B" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4" Click="btnEditar_Click"/>
+
+        <Button  x:Name="btnEditar" Content="Editar Item Selecionado" HorizontalAlignment="Left" Margin="210,544,0,-105" VerticalAlignment="Top" Width="201" Background="#4C1C64CD" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4" Click="btnEditar_Click"/>
+        <TextBox Padding="1" x:Name="txtEditarItem" HorizontalAlignment="Left" Height="30" Margin="507,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="349" Background="{x:Null}" BorderBrush="#FFFF1B1B" Foreground="#DDFFFFFF" SelectionBrush="#FF31D318" CaretBrush="#FFFF1B1B" CharacterCasing="Upper" AllowDrop="False" IsTabStop="False" Visibility="Hidden"/>
+        <Button  x:Name="btnSalvarAlt" Content="Salvar Alteração" HorizontalAlignment="Left" Margin="507,468,0,0" VerticalAlignment="Top" Width="195" Background="#FF252E3B" Click="btnSalvarAlt_Click" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4" Visibility="Hidden"/>
     </Grid>
 </Window>
