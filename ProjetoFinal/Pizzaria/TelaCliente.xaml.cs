@@ -87,6 +87,7 @@ namespace Pizzaria
         {
             try
             {
+
                 CellValue = int.Parse(DtGrid.SelectedValue.ToString());
                 txtEditarItem.Visibility = Visibility.Visible;
                 btnSalvarAlt.Visibility = Visibility.Visible;
