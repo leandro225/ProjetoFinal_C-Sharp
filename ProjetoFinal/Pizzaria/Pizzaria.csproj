@@ -139,11 +139,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\Fechar.png" />
-    <Resource Include="img\logo1.png" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Resource Include="img\Clientes.png" />
+    <Resource Include="img\Fechar.png" />
+    <Resource Include="img\logo1.png" />
+    <Resource Include="img\menu.png" />
+    <Resource Include="img\menu2.png" />
+    <Resource Include="img\pizza-slice.png" />
+    <Resource Include="img\team.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Clientes2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,9 +34,7 @@ namespace Pizzaria
         private void btnPizzas_Click(object sender, RoutedEventArgs e)
         {
             CadastroPizza novoCad = new CadastroPizza();
-            novoCad.ShowDialog();
-           
-           
+            novoCad.ShowDialog();          
         }
 
         private void btnCliente_Click(object sender, RoutedEventArgs e)
