@@ -38,9 +38,9 @@
 
         <TextBox Padding="1" x:Name="txtNovoSabor" materialDesign:HintAssist.Hint="Digite aqui a descrição" HorizontalAlignment="Left" Height="30" Margin="507,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="349" Background="{x:Null}" BorderBrush="#FFF5EB29" Foreground="#DDFFFFFF" SelectionBrush="#FF0078D7" CaretBrush="#FFF5EB29" CharacterCasing="Upper"/>
 
-        <DataGrid SelectedValuePath="IdPizza" x:Name="DtGrid" HorizontalGridLinesBrush="{x:Null}" CanUserReorderColumns="False" CanUserResizeColumns="False"  CanUserResizeRows="False" Height="274" Margin="30,110,526,209" Background="{x:Null}" SelectionChanged="DtGrid_SelectionChanged" VerticalGridLinesBrush="{x:Null}" AutoGenerateColumns="False" GridLinesVisibility="None" CanUserDeleteRows="False" BorderBrush="{x:Null}" FontFamily="Century Gothic" FontSize="12" FontWeight="Bold" SelectionMode="Single" IsReadOnly="True" Foreground="#DDFFFFFF">
+        <DataGrid SelectedValuePath="PizzaID" x:Name="DtGrid" HorizontalGridLinesBrush="{x:Null}" CanUserReorderColumns="False" CanUserResizeColumns="False"  CanUserResizeRows="False" Height="274" Margin="30,110,526,209" Background="{x:Null}" SelectionChanged="DtGrid_SelectionChanged" VerticalGridLinesBrush="{x:Null}" AutoGenerateColumns="False" GridLinesVisibility="None" CanUserDeleteRows="False" BorderBrush="{x:Null}" FontFamily="Century Gothic" FontSize="12" FontWeight="Bold" SelectionMode="Single" IsReadOnly="True" Foreground="#DDFFFFFF">
             <DataGrid.Columns>
-                <DataGridTextColumn  Binding="{Binding IdPizza}" Header="Código" Width="80" SortDirection="Ascending"/>
+                <DataGridTextColumn  Binding="{Binding PizzaID}" Header="Código" Width="80" SortDirection="Ascending"/>
                 <DataGridTextColumn  Binding="{Binding SaborPizza}" Header="Descrição" Width="*" SortDirection="Ascending" />
             </DataGrid.Columns>
         </DataGrid>

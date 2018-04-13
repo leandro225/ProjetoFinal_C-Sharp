@@ -18,7 +18,7 @@ namespace Controller
         {
             int id = ultimoID + 1;
             ultimoID = id;
-            novo.IdPizza = id;
+            novo.PizzaID = id;
             PizzaList.Add(novo);
 
         }
@@ -32,7 +32,7 @@ namespace Controller
         {
             foreach (var pizza in new List<Pizza>(PizzaList))
             {
-                if (pizza.IdPizza == idPizza)
+                if (pizza.PizzaID == idPizza)
                 {
 
                     PizzaList.Remove(pizza);
@@ -47,7 +47,7 @@ namespace Controller
         {
             foreach (var item in PizzaList)
             {
-                if (id == item.IdPizza)
+                if (id == item.PizzaID)
                 {
                     return item.SaborPizza;
                 }
@@ -59,7 +59,7 @@ namespace Controller
         {
             foreach (var x in PizzaList)
             {
-                if (x.IdPizza == id)
+                if (x.PizzaID == id)
                 {
                     x.SaborPizza = novaDesc;
                 }

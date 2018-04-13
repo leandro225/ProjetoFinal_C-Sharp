@@ -72,7 +72,7 @@ namespace Pizzaria
 
 
         }
-       
+
         private void DtGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // DataGrid dataGrid = sender as DataGrid;
@@ -117,7 +117,8 @@ namespace Pizzaria
             }
 
         }
-        
+
+    
     }
 }
-    
+

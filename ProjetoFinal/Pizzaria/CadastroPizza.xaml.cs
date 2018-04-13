@@ -74,13 +74,13 @@ namespace Pizzaria
 
                 if (resp.Equals(true))
                 {
-                    MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK,MessageBoxImage.Information);
+                    MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
                     int selectedIndex = DtGrid.SelectedIndex;
                     DtGrid.Items.RemoveAt(selectedIndex);
                 }
                 else
                 {
-                    MessageBox.Show("Por Favor, Selecione um Item !!!", "Erro", MessageBoxButton.OK,MessageBoxImage.Error);
+                    MessageBox.Show("Por Favor, Selecione um Item !!!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception)
@@ -115,7 +115,7 @@ namespace Pizzaria
         }
 
         private void btnSalvarAlt_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             try
             {
                 Controller.PizzaController.alterarDados(CellValue, txtEditarItem.Text);
@@ -127,14 +127,14 @@ namespace Pizzaria
             catch (Exception)
             {
                 MessageBox.Show("Por Favor, Selecione um item!!");
-               
+
             }
-            
 
 
 
 
-            
+
+
         }
     }
 }

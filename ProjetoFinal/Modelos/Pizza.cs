@@ -8,7 +8,7 @@ namespace Modelos
 {
     public class Pizza
     {
-        public int IdPizza { get; set; }
+        public int PizzaID { get; set; }
         public string SaborPizza { get; set; }
 
     }

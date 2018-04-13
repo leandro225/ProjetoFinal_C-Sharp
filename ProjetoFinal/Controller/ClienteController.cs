@@ -11,14 +11,18 @@ namespace Controller
     public class ClienteController
     {
         public static List<Cliente> Clientes = new List<Cliente>();
-
+        static int ultimoID = 0;
 
         public static void SalvarCliente(Cliente novoCli)
         {
+
+            int id = ultimoID + 1;
+            ultimoID = id;
+            novoCli.ClienteID = id;
             Clientes.Add(novoCli);
-           // Contexto ctx = new Contexto();
-           // ctx.Clientes.Add(novoCli);
-           // ctx.SaveChanges();
+            // Contexto ctx = new Contexto();
+            // ctx.Clientes.Add(novoCli);
+            // ctx.SaveChanges();
         }
         //public static Cliente PesquisaCliPorTel(int tel)
         // {
@@ -49,22 +53,22 @@ namespace Controller
             }
             return null;
         }
-        public static string retornaDescricao(int telefone)
+        public static string retornaDescricao(int id)
         {
             foreach (var item in Clientes)
             {
-                if (telefone == item.Telefone)
+                if (id == item.ClienteID)
                 {
                     return item.Nome;
                 }
             }
             return null;
         }
-        public static void alterarDados(int telefone, string novaDesc)
+        public static void alterarDados(int id, string novaDesc)
         {
             foreach (var x in Clientes)
             {
-                if (x.Telefone == telefone)
+                if (x.ClienteID == id)
                 {
                     x.Nome = novaDesc;
                 }
@@ -74,11 +78,11 @@ namespace Controller
         {
             return Clientes;
         }
-        public static bool ExcluirCliente(int telefone)
+        public static bool ExcluirCliente(int id)
         {
             foreach (var cliente in new List<Cliente>(Clientes))
             {
-                if (cliente.Telefone == telefone)
+                if (cliente.ClienteID == id)
                 {
 
                     Clientes.Remove(cliente);
@@ -110,6 +114,6 @@ namespace Controller
         //  ctx.Entry(c).State = System.Data.Entity.EntityState.Deleted;
         //  ctx.SaveChanges();
         //  return true;
-
-    }   // }
+        // }
+    }
 }

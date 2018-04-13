@@ -9,13 +9,17 @@ namespace Modelos
     public class Pedido
     {
         
-             public int IdPedido { get; set; }
-             
-             public DateTime DataPedido { get; set; }
-             public Cliente cliente { get; set;  }
-             public List <Pizza> pizza { get; set; }
+        public int PedidoID { get; set; }
 
-        
+        public string DataPedido { get; set; }
+
+        public Cliente Cliente { get; set; }
+
+        public double Total { get; set; }
+
+        public List<Item> ListaItens { get; set; }
+
+
 
 
 

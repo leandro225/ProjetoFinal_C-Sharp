@@ -38,16 +38,16 @@ namespace Pizzaria
                 Cliente novoCli = new Cliente();
 
                 novoCli.Nome = txtNome.Text;
-                novoCli.Telefone =int.Parse(txtTelefone.Text);
+                novoCli.Telefone = int.Parse(txtTelefone.Text);
                 novoCli.Endereco = txtEnd.Text;
                 novoCli.Numero = int.Parse(txtNumero.Text);
                 novoCli.Bairro = txtBairro.Text;
 
-                Controller.ClienteController.SalvarCliente(novoCli);           
+                Controller.ClienteController.SalvarCliente(novoCli);
                 MessageBox.Show("Cliente cadastrado com sucesso!", "Suecesso");
                 this.Close();
 
-                
+
 
             }
             catch (Exception)

@@ -27,16 +27,17 @@ namespace Pizzaria
         {
             InitializeComponent();
             rbP.IsChecked = true;
-            
-            ListaSabores= Controller.PizzaController.retornaSabores();
 
-           foreach (var x in ListaSabores)
+            ListaSabores = Controller.PizzaController.retornaSabores();
+
+            foreach (var x in ListaSabores)
             {
                 cmbSabores.Items.Add(x.SaborPizza);
                 cmbSabores2.Items.Add(x.SaborPizza);
                 cmbSabores3.Items.Add(x.SaborPizza);
-            }   
+            }
         }
+
         //Botão de Fechar a janela
         private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
@@ -45,7 +46,7 @@ namespace Pizzaria
 
         private void btnPesquisaTel_Click(object sender, RoutedEventArgs e)
         {
-           
+
             try
             {
                 Cliente Recep = Controller.ClienteController.PesquisaCliPorTel(int.Parse(txtTelefone.Text));
@@ -60,7 +61,7 @@ namespace Pizzaria
                     tela.ShowDialog();
                 }
                 else
-                {   
+                {
                     // Caso o cliente já esteja cadastrado, as informações aparecerão na tela
                     blockNome.Text = Recep.Nome;
                     blockFone.Text = Recep.Telefone.ToString();
@@ -76,28 +77,16 @@ namespace Pizzaria
             }
 
         }
-        //Recebendo o Valor selecionado de uma combobox
-        private void cmbSabores_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //o TextBlock recebe o valor que foi selecionado na ComboBox
-            tbSabor.Text = ((ComboBox)sender).SelectedItem.ToString();
 
-        }
 
-        private void cmbSabores2_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            tbSabor2.Text = ((ComboBox)sender).SelectedItem.ToString();
-        }
 
-        private void cmbSabores3_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-                tbSabor3.Text = ((ComboBox)sender).SelectedItem.ToString();
-            
-        }
+
+
+
 
         private void rbP_Checked(object sender, RoutedEventArgs e)
         {
-               
+
 
             cmbSabores2.Visibility = Visibility.Hidden;
             cmbSabores3.Visibility = Visibility.Hidden;
@@ -108,7 +97,7 @@ namespace Pizzaria
 
         private void rbM_Checked(object sender, RoutedEventArgs e)
         {
-           
+
             // cmbSabores2.IsEnabled = true;
             //cmbSabores3.IsEnabled = false;
             cmbSabores2.Visibility = Visibility.Visible;
@@ -120,7 +109,7 @@ namespace Pizzaria
 
         private void rbG_Checked(object sender, RoutedEventArgs e)
         {
-            
+
             //cmbSabores2.IsEnabled = true;
             //cmbSabores3.IsEnabled = true;
             cmbSabores2.Visibility = Visibility.Visible;
@@ -130,22 +119,129 @@ namespace Pizzaria
 
         }
 
-        private void cbBorda_Checked(object sender, RoutedEventArgs e)
+
+
+
+
+        private void btnFinalizar_Click(object sender, RoutedEventArgs e)
         {
-            if (cbBorda.IsChecked==true)
-            
-                tbcheck.Text = cbBorda.Content.ToString();
+            Pedido novoPedido = new Pedido();
+            Cliente novoCliente = new Cliente();
+
+            try
+            {
+                novoPedido.Cliente = Controller.ClienteController.PesquisaCliPorTel(int.Parse(blockFone.Text));
+                novoPedido.DataPedido = DateTime.Now.ToString();
+                novoPedido.PedidoID = 1;
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
         }
 
-        private void cbazeitona_Checked(object sender, RoutedEventArgs e)
+        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
         {
-            tbcheck.Text = cbazeitona.Content.ToString();
+            Item novoItem = new Item();
+
+            novoItem.Tamanho = tamanhoSelecionado();//chama método para adicionar o tamanho ao objeto ITEM
+            novoItem.Sabor = saborSelecionado();
+            novoItem.Adicional = adicionalSelecionado(novoItem);
+
+            ListView1.Items.Add(novoItem);
+            // MessageBox.Show(novoItem.Adicional);
         }
 
-        private void cbBacon_Checked(object sender, RoutedEventArgs e)
+        private void btnRemover_Click(object sender, RoutedEventArgs e)
         {
-            tbcheck.Text = cbBacon.Content.ToString();
+            MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+            int selectedIndex = ListView1.SelectedIndex;
+            ListView1.Items.RemoveAt(selectedIndex);
         }
 
+
+        //Metodos adicionais
+        public string tamanhoSelecionado()
+        {
+
+            if (rbP.IsChecked == true)
+            {
+                return rbP.Content.ToString();
+
+            }
+            else
+            {
+                if (rbM.IsChecked == true)
+                {
+                    return rbM.Content.ToString();
+                }
+                else
+                {
+                    return rbG.Content.ToString();
+                }
+            }
+
+        }
+
+        public string saborSelecionado()
+        {
+            string sabores;
+
+            if (rbP.IsChecked == true)
+            {
+                sabores = cmbSabores.SelectedItem.ToString();
+                return sabores;
+            }
+            else
+            {
+                if (rbM.IsChecked == true)
+                {
+                    sabores = (cmbSabores.SelectedItem.ToString() + cmbSabores2.SelectedItem.ToString());
+                    return sabores;
+                }
+                else
+                {
+
+                    sabores = (cmbSabores.SelectedItem.ToString() + cmbSabores2.SelectedItem.ToString() + cmbSabores3.SelectedItem.ToString());
+                    return sabores;
+                }
+            }
+        }
+
+        public string adicionalSelecionado(Item novoItem)
+        {
+            string adicionais;
+
+            if (cbazeitona.IsChecked == true)
+            {
+                novoItem.Adicional = "+Azeitona ";
+
+            }
+            if (cbBorda.IsChecked == true)
+            {
+                novoItem.Adicional += "+Borda Recheada ";
+
+            }
+            if (cbCheddar.IsChecked == true)
+            {
+                novoItem.Adicional += "+Cheddar ";
+
+            }
+            if (cbBacon.IsChecked == true)
+            {
+                novoItem.Adicional += "+Bacon ";
+
+            }
+
+            return adicionais = novoItem.Adicional;
+
+
+        }
     }
+
 }
+
+
