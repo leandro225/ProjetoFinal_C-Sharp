@@ -30,7 +30,7 @@ namespace Controller
 
         public static bool ExcluirPizza(int idPizza)
         {
-            foreach (var pizza in new List<Pizza>(PizzaList))
+            foreach (var pizza in PizzaList)
             {
                 if (pizza.PizzaID == idPizza)
                 {

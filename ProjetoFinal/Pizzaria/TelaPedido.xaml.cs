@@ -21,16 +21,21 @@ namespace Pizzaria
     /// </summary>
     public partial class TelaPedido : Window
     {
-        List<Pizza> ListaSabores = new List<Pizza>();
+        static List<Pizza> ListaSabores = new List<Pizza>();
+        static List<Item> itemList = new List<Item>();
+        int ultimoId = 0;
+        static double  subTotal = 0.00;
+        
+
 
         public TelaPedido()
         {
             InitializeComponent();
-            rbP.IsChecked = true;
+            rbP.IsChecked = true;// inicia o radio buttom de tamanho "Pequeno" como checked
 
-            ListaSabores = Controller.PizzaController.retornaSabores();
+            ListaSabores = Controller.PizzaController.retornaSabores(); // recebe a lista de sabores cadastrados
 
-            foreach (var x in ListaSabores)
+            foreach (var x in ListaSabores)  // realiza a inserção dos sabores nas combobox
             {
                 cmbSabores.Items.Add(x.SaborPizza);
                 cmbSabores2.Items.Add(x.SaborPizza);
@@ -38,26 +43,133 @@ namespace Pizzaria
             }
         }
 
-        //Botão de Fechar a janela
+
+        // ************************************************ BOTÕES E EVENTOS ******************************************************************************
+
+
+        // DISPARA UM EVENTO CASO O RADIO BUTTOM TAMANHO "P" ESTEJA CHECKED, ALTERNANDO A VISIBILIDADE DOS DEMAIS CAMPOS DE SABOR
+        private void rbP_Checked(object sender, RoutedEventArgs e)
+        {
+            cmbSabores2.Visibility = Visibility.Hidden;
+            cmbSabores3.Visibility = Visibility.Hidden;
+            lblSabor2.Visibility = Visibility.Hidden;
+            lblSabor3.Visibility = Visibility.Hidden;
+        }
+
+        // DISPARA UM EVENTO CASO O RADIO BUTTOM TAMANHO "M" ESTEJA CHECKED, ALTERNANDO A VISIBILIDADE DOS DEMAIS CAMPOS DE SABOR
+        private void rbM_Checked(object sender, RoutedEventArgs e)
+        {
+            cmbSabores2.Visibility = Visibility.Visible;
+            cmbSabores3.Visibility = Visibility.Hidden;
+            lblSabor2.Visibility = Visibility.Visible;
+            lblSabor3.Visibility = Visibility.Hidden;
+        }
+
+        // DISPARA UM EVENTO CASO O RADIO BUTTOM TAMANHO "G" ESTEJA CHECKED, ALTERNANDO A VISIBILIDADE DOS DEMAIS CAMPOS DE SABOR
+        private void rbG_Checked(object sender, RoutedEventArgs e)
+        {
+            cmbSabores2.Visibility = Visibility.Visible;
+            cmbSabores3.Visibility = Visibility.Visible;
+            lblSabor2.Visibility = Visibility.Visible;
+            lblSabor3.Visibility = Visibility.Visible;
+        }
+
+
+        // BOTÃO FINALIZAR PEDIDO
+        private void btnFinalizar_Click(object sender, RoutedEventArgs e)
+        {
+            Pedido novoPedido = new Pedido();
+            Cliente novoCliente = new Cliente();
+
+            try
+            {
+                novoPedido.Cliente = Controller.ClienteController.PesquisaCliPorTel(int.Parse(blockFone.Text));
+                novoPedido.DataPedido = DateTime.Now.ToString();
+                novoPedido.PedidoID = 1;
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+        }
+        
+        // BOTÃO ADICIONAR ITENS
+        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Item novoItem = new Item();
+
+                novoItem = tamanhoSelecionado(novoItem);
+                novoItem.Sabor = saborSelecionado();
+                novoItem = adicionalSelecionado(novoItem);
+                novoItem.ItemID = ultimoId += 1;
+
+                ListView1.Items.Add(novoItem);              
+                itemList.Add(novoItem);
+
+                cmbSabores.SelectedIndex = -1;
+                cmbSabores2.SelectedIndex = -1;
+                cmbSabores3.SelectedIndex = -1;
+                cbAzeitona.IsChecked = false;
+                cbCheddar.IsChecked = false;
+                cbBacon.IsChecked = false;
+                cbBorda.IsChecked = false;
+
+                txtTotal.Text = (subTotal += novoItem.Valor).ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Por Favor, Selecione o sabor !!!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }         
+        }
+
+        // BOTÃO REMOVER ITEM
+        private void btnRemover_Click(object sender, RoutedEventArgs e)
+        {          
+            try
+            {
+                int idSelecionado = int.Parse(ListView1.SelectedValue.ToString()); //Pega item selecionado e transforma o seu ID em int
+                bool resp = removeItem(idSelecionado); //passa o ID do item selecionado para remoção
+                if (resp.Equals(true))
+                {
+                    MessageBox.Show("Item Removido com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
+                    txtTotal.Text = subTotal.ToString();
+                    int selectedIndex = ListView1.SelectedIndex;
+                    ListView1.Items.RemoveAt(selectedIndex);
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, Selecione um item ", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Por favor, Selecione um item ", "Erro", MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+        }
+
+        // BOTÃO DE FECHAR A JANELA
         private void btnFechar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        // BOTÃO DE PESQUISA ATRAVÉS DO TELEFONE DO CLIENTE
         private void btnPesquisaTel_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
+                // realiza a pesquisa do cliente passando o telefone como parâmetro e recebe o objeto 
                 Cliente Recep = Controller.ClienteController.PesquisaCliPorTel(int.Parse(txtTelefone.Text));
-
 
                 if (Recep == null)
                 {
                     MessageBox.Show("Cliente não Cadastrado", "Informação", MessageBoxButton.OK);
                     Controller.PedidoController.GuardaTelefone(int.Parse(txtTelefone.Text));
                     CadastroCliente tela = new CadastroCliente();
-
                     tela.ShowDialog();
                 }
                 else
@@ -73,119 +185,51 @@ namespace Pizzaria
             catch (Exception)
             {
                 MessageBox.Show("Por Favor, Insira o Telefone", "Informação", MessageBoxButton.OK);
-
             }
 
         }
 
-
-
-
-
-
-
-        private void rbP_Checked(object sender, RoutedEventArgs e)
+        // BOTÃO DE EDIÇÃO DO ITEM SELECIONADO
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-
-
-            cmbSabores2.Visibility = Visibility.Hidden;
-            cmbSabores3.Visibility = Visibility.Hidden;
-            lblSabor2.Visibility = Visibility.Hidden;
-            lblSabor3.Visibility = Visibility.Hidden;
-
+          
+            
         }
 
-        private void rbM_Checked(object sender, RoutedEventArgs e)
-        {
+        //**************************************  MÉTODOS ADICIONAIS ****************************************************
 
-            // cmbSabores2.IsEnabled = true;
-            //cmbSabores3.IsEnabled = false;
-            cmbSabores2.Visibility = Visibility.Visible;
-            cmbSabores3.Visibility = Visibility.Hidden;
-            lblSabor2.Visibility = Visibility.Visible;
-            lblSabor3.Visibility = Visibility.Hidden;
-
-        }
-
-        private void rbG_Checked(object sender, RoutedEventArgs e)
-        {
-
-            //cmbSabores2.IsEnabled = true;
-            //cmbSabores3.IsEnabled = true;
-            cmbSabores2.Visibility = Visibility.Visible;
-            cmbSabores3.Visibility = Visibility.Visible;
-            lblSabor2.Visibility = Visibility.Visible;
-            lblSabor3.Visibility = Visibility.Visible;
-
-        }
-
-
-
-
-
-        private void btnFinalizar_Click(object sender, RoutedEventArgs e)
-        {
-            Pedido novoPedido = new Pedido();
-            Cliente novoCliente = new Cliente();
-
-            try
-            {
-                novoPedido.Cliente = Controller.ClienteController.PesquisaCliPorTel(int.Parse(blockFone.Text));
-                novoPedido.DataPedido = DateTime.Now.ToString();
-                novoPedido.PedidoID = 1;
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
-
-        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
-        {
-            Item novoItem = new Item();
-
-            novoItem.Tamanho = tamanhoSelecionado();//chama método para adicionar o tamanho ao objeto ITEM
-            novoItem.Sabor = saborSelecionado();
-            novoItem.Adicional = adicionalSelecionado(novoItem);
-
-            ListView1.Items.Add(novoItem);
-            // MessageBox.Show(novoItem.Adicional);
-        }
-
-        private void btnRemover_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
-            int selectedIndex = ListView1.SelectedIndex;
-            ListView1.Items.RemoveAt(selectedIndex);
-        }
-
-
-        //Metodos adicionais
-        public string tamanhoSelecionado()
+        //RETORNA O TAMAHO DA PIZZA SELECIONADA
+        public Item tamanhoSelecionado(Item itemRecebido)
         {
 
             if (rbP.IsChecked == true)
             {
-                return rbP.Content.ToString();
+                itemRecebido.Tamanho = "Pequena";
+                itemRecebido.Valor = 25.00;
+                return itemRecebido;
 
             }
             else
             {
                 if (rbM.IsChecked == true)
                 {
-                    return rbM.Content.ToString();
+                    itemRecebido.Tamanho = "Média";
+                    itemRecebido.Valor = 35.00;
+                    return itemRecebido;
+
                 }
                 else
                 {
-                    return rbG.Content.ToString();
+                    itemRecebido.Tamanho = "Grande";
+                    itemRecebido.Valor = 45.00;
+                    return itemRecebido;
+
                 }
             }
 
         }
 
+        //RETORNA O SABOR OU SABORES QUE FORAM SELECIONADOS
         public string saborSelecionado()
         {
             string sabores;
@@ -199,46 +243,65 @@ namespace Pizzaria
             {
                 if (rbM.IsChecked == true)
                 {
-                    sabores = (cmbSabores.SelectedItem.ToString() + cmbSabores2.SelectedItem.ToString());
+                    sabores = (cmbSabores.SelectedItem.ToString() + "-" + cmbSabores2.SelectedItem.ToString());
                     return sabores;
                 }
                 else
                 {
-
-                    sabores = (cmbSabores.SelectedItem.ToString() + cmbSabores2.SelectedItem.ToString() + cmbSabores3.SelectedItem.ToString());
+                    sabores = (cmbSabores.SelectedItem.ToString() + "-" + cmbSabores2.SelectedItem.ToString() + "-" + cmbSabores3.SelectedItem.ToString());
                     return sabores;
                 }
             }
         }
 
-        public string adicionalSelecionado(Item novoItem)
+        //RETORNA UMA STRING COM OS ADICIONAIS SELECIONADOS RECEBENDO O OBJETO ITEM COMO PARÂMETRO
+        public Item adicionalSelecionado(Item itemRecebido)
         {
-            string adicionais;
-
-            if (cbazeitona.IsChecked == true)
+            if (cbAzeitona.IsChecked == true)
             {
-                novoItem.Adicional = "+Azeitona ";
+                itemRecebido.Adicional = "+Azeitona ";
+                itemRecebido.Valor +=  5.30;
 
             }
             if (cbBorda.IsChecked == true)
             {
-                novoItem.Adicional += "+Borda Recheada ";
-
+                itemRecebido.Adicional += "+Borda Recheada ";
+                itemRecebido.Valor += 5.75;
             }
             if (cbCheddar.IsChecked == true)
             {
-                novoItem.Adicional += "+Cheddar ";
-
+                itemRecebido.Adicional += "+Cheddar ";
+                itemRecebido.Valor += 5.50;
             }
             if (cbBacon.IsChecked == true)
             {
-                novoItem.Adicional += "+Bacon ";
-
+                itemRecebido.Adicional += "+Bacon ";
+                itemRecebido.Valor += 5.20;
             }
 
-            return adicionais = novoItem.Adicional;
+            return itemRecebido;
 
 
+        }
+
+        //REMOVE ITEM DA LISTA ATUAL
+        public static bool removeItem(int id)
+        {
+            foreach (var item in itemList)
+            {
+                if (id == item.ItemID)
+                {
+                    itemList.Remove(item);
+                    subTotal = (subTotal - item.Valor);                    
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //EDITA ITEM DA LISTA ATUAL
+        public static void editarItem(Item itemEditado)
+        {
         }
     }
 
