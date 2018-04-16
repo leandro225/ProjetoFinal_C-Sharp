@@ -41,6 +41,8 @@ namespace Pizzaria
                 cmbSabores2.Items.Add(x.SaborPizza);
                 cmbSabores3.Items.Add(x.SaborPizza);
             }
+
+            
         }
 
 
@@ -78,20 +80,51 @@ namespace Pizzaria
         // BOTÃO FINALIZAR PEDIDO
         private void btnFinalizar_Click(object sender, RoutedEventArgs e)
         {
-            Pedido novoPedido = new Pedido();
-            Cliente novoCliente = new Cliente();
-
             try
             {
-                novoPedido.Cliente = Controller.ClienteController.PesquisaCliPorTel(int.Parse(blockFone.Text));
+                Pedido novoPedido = new Pedido();
+                Cliente novoCliente = new Cliente();
+
+                novoCliente = Controller.ClienteController.PesquisaCliPorTel(int.Parse(blockFone.Text));
+
+                novoPedido.Cliente = novoCliente;
                 novoPedido.DataPedido = DateTime.Now.ToString();
-                novoPedido.PedidoID = 1;
+                novoPedido.Total = double.Parse(txtTotal.Text);
+                novoPedido.ListaItens = itemList;
+                Controller.PedidoController.SalvarPedido(novoPedido);
+                Controller.PedidoController.GuardaTelefone(novoCliente.Telefone);
+              
+
+                TelaPedidoFinalizado novaTela = new TelaPedidoFinalizado();
+                novaTela.ShowDialog();
+
+                subTotal = 0.00;
+                cmbSabores.SelectedIndex = -1;
+                cmbSabores2.SelectedIndex = -1;
+                cmbSabores3.SelectedIndex = -1;
+                cbAzeitona.IsChecked = false;
+                cbCheddar.IsChecked = false;
+                cbBacon.IsChecked = false;
+                cbBorda.IsChecked = false;
+                ListView1.Items.Clear();
+                itemList = new List<Item>();
+                blockNome.Text=null;
+                blockFone.Text = null;
+                blockEnd.Text = null;
+                blockNr.Text = null;
+                blockBairro.Text = null;
+                txtTelefone.Text = null;
+                rbP.IsChecked = true;
+                txtTotal.Text = null;
+
             }
             catch (Exception)
             {
 
-
+                MessageBox.Show("Por Favor, Preencha os dados do Cliente", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            
+          
 
         }
         
@@ -190,11 +223,7 @@ namespace Pizzaria
         }
 
         // BOTÃO DE EDIÇÃO DO ITEM SELECIONADO
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
-        {
-          
-            
-        }
+       
 
         //**************************************  MÉTODOS ADICIONAIS ****************************************************
 
@@ -303,6 +332,7 @@ namespace Pizzaria
         public static void editarItem(Item itemEditado)
         {
         }
+
     }
 
 }

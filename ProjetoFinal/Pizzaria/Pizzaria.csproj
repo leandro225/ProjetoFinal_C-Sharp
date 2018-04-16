@@ -85,6 +85,9 @@
     <Compile Include="TelaPedido.xaml.cs">
       <DependentUpon>TelaPedido.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TelaPedidoFinalizado.xaml.cs">
+      <DependentUpon>TelaPedidoFinalizado.xaml</DependentUpon>
+    </Compile>
     <Page Include="CadastroCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TelaPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TelaPedidoFinalizado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
