@@ -26,7 +26,7 @@ namespace Pizzaria
 
             Pedido recebePedido = new Pedido();
 
-            recebePedido = Controller.PedidoController.retornaPedido();
+            recebePedido = Controller.PedidoController.ultimoPedido;
 
             txtNome.Text = recebePedido.Cliente.Nome;
             txtTelefone.Text = recebePedido.Cliente.Telefone.ToString();
@@ -35,6 +35,7 @@ namespace Pizzaria
             txtBairro.Text = recebePedido.Cliente.Bairro;
             txtTotal.Text = recebePedido.Total.ToString();
             txtCodigo.Text = recebePedido.PedidoID.ToString();
+            txtData.Text = recebePedido.DataPedido;
             listFinal.ItemsSource = recebePedido.ListaItens;
 
         }

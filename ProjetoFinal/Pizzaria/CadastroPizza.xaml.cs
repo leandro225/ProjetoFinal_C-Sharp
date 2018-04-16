@@ -84,6 +84,7 @@ namespace Pizzaria
                 MessageBox.Show("Por Favor, Selecione um item!!","Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private void btnSalvarAlt_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -108,6 +109,22 @@ namespace Pizzaria
             // MessageBox.Show(CellValue.ToString());
             // CellValue = int.Parse(DtGrid.SelectedValue.ToString());
             // }
+        }
+
+        private void txtNovoSabor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.Enter))
+            {
+                btnCadSabor_Click(this, new RoutedEventArgs());
+            }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.Escape))
+            {
+                btnFechar_Click(this, new RoutedEventArgs());
+            }
         }
     }
 }

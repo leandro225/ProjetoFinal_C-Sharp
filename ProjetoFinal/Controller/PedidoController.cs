@@ -12,10 +12,12 @@ namespace Controller
         public static int UltimoTelefone = 0;
         static int ultimoID = 0;
         public static List<Pedido> pedidos = new List<Pedido>();
+        public static Pedido ultimoPedido = new Pedido();
+       
 
         public static void SalvarPedido(Pedido novoPedido)
         {
-
+            ultimoPedido = novoPedido; //guarda as informações do último pedido realizado para ser usado na tela de Pedido Finalizado
             int id = ultimoID + 1;
             ultimoID = id;
             novoPedido.PedidoID = ultimoID;
@@ -38,17 +40,7 @@ namespace Controller
 
         }
 
-        public static Pedido retornaPedido()
-        {
-            foreach (var x in pedidos)
-            {
-                if (UltimoTelefone==x.Cliente.Telefone)
-                {
-                    return x;
-                }
-            }
-            return null;
-        }
+       
 
 
     }

@@ -18,13 +18,13 @@
     <Grid  Background="#FF1A2028">
         <StackPanel Height="30" Margin="0" VerticalAlignment="Top" Background="#CCFFFFFF"/>
         <Label Content="Resumo do Pedido" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top" FontFamily="Stencil" Foreground="#FF1A2028" FontSize="14"/>
-        <Label Content="Cliente" HorizontalAlignment="Left" Margin="32,56,0,0" VerticalAlignment="Top" Foreground="#DDD4FF13" FontFamily="Stencil"/>
-        <Label Content="Nome:" HorizontalAlignment="Left" Margin="32,90,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <Label Content="Telefone:" HorizontalAlignment="Left" Margin="32,116,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <Label Content="Endereço:" HorizontalAlignment="Left" Margin="32,140,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <Label Content="Número:" HorizontalAlignment="Left" Margin="32,164,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <Label Content="Bairro:" HorizontalAlignment="Left" Margin="32,190,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <Label Content="Pedido" HorizontalAlignment="Left" Margin="32,230,0,0" VerticalAlignment="Top" Foreground="#DDD4FF13" FontFamily="Stencil"/>
+        <Label Content="Cliente" HorizontalAlignment="Left" Margin="32,85,0,0" VerticalAlignment="Top" Foreground="#DDD4FF13" FontFamily="Stencil"/>
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="32,119,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
+        <Label Content="Telefone:" HorizontalAlignment="Left" Margin="32,145,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
+        <Label Content="Endereço:" HorizontalAlignment="Left" Margin="32,169,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
+        <Label Content="Número:" HorizontalAlignment="Left" Margin="32,193,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
+        <Label Content="Bairro:" HorizontalAlignment="Left" Margin="32,219,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
+        <Label Content="Pedido" HorizontalAlignment="Left" Margin="32,259,0,0" VerticalAlignment="Top" Foreground="#DDD4FF13" FontFamily="Stencil"/>
 
         <ListView x:Name="listFinal"  HorizontalAlignment="Left" Height="164" Margin="22,289,0,0" VerticalAlignment="Top" Width="800" Background="#7F3A3A3A">
             <ListView.View>
@@ -36,16 +36,18 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Total:" HorizontalAlignment="Left" Margin="700,465,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold" Width="45"/>
-        <TextBlock x:Name="txtTelefone" HorizontalAlignment="Left" Margin="115,122,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
-        <TextBlock x:Name="txtNome" HorizontalAlignment="Left" Margin="115,96,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
-        <TextBlock x:Name="txtEndereco" HorizontalAlignment="Left" Margin="115,146,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
-        <TextBlock x:Name="txtNumero" HorizontalAlignment="Left" Margin="115,170,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
-        <TextBlock x:Name="txtBairro" HorizontalAlignment="Left" Margin="115,196,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
-        <TextBlock x:Name="txtTotal" HorizontalAlignment="Left" Margin="750,471,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="63"/>
-        <TextBlock x:Name="txtCodigo" HorizontalAlignment="Left" Margin="147,272,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <Label Content="Código Pedido:" HorizontalAlignment="Left" Margin="32,266,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <Button  x:Name="btnFechar" Content="Fechar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Background="#FF252E3B" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4" Margin="37,471,0,0" AutomationProperties.AccessKey="Enter" Click="btnFechar_Click_1"/>
+        <Label Content="Total: R$" HorizontalAlignment="Left" Margin="697,481,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold" Width="62"/>
+        <TextBlock x:Name="txtTelefone" HorizontalAlignment="Left" Margin="115,151,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
+        <TextBlock x:Name="txtNome" HorizontalAlignment="Left" Margin="115,125,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
+        <TextBlock x:Name="txtEndereco" HorizontalAlignment="Left" Margin="115,175,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
+        <TextBlock x:Name="txtNumero" HorizontalAlignment="Left" Margin="115,199,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
+        <TextBlock x:Name="txtBairro" HorizontalAlignment="Left" Margin="115,225,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
+        <TextBlock x:Name="txtTotal" HorizontalAlignment="Left" Margin="759,487,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="63"/>
+        <TextBlock x:Name="txtCodigo" HorizontalAlignment="Left" Margin="150,54,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Label Content="Código Pedido:" HorizontalAlignment="Left" Margin="34,48,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
+        <Button  x:Name="btnFechar" Content="Fechar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Background="#FF252E3B" Foreground="White" BorderBrush="#FFF9F9F9" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Century Gothic" FontWeight="Normal" BorderThickness="1" ClipToBounds="True" Padding="16,4" Margin="32,471,0,0" AutomationProperties.AccessKey="Enter" Click="btnFechar_Click_1"/>
+        <TextBlock x:Name="txtData" HorizontalAlignment="Left" Margin="326,56,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Label Content="Data Pedido:" HorizontalAlignment="Left" Margin="230,48,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold"/>
 
 
 

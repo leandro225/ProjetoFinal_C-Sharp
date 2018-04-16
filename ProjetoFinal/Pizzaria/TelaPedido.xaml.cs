@@ -89,33 +89,15 @@ namespace Pizzaria
 
                 novoPedido.Cliente = novoCliente;
                 novoPedido.DataPedido = DateTime.Now.ToString();
+
                 novoPedido.Total = double.Parse(txtTotal.Text);
                 novoPedido.ListaItens = itemList;
-                Controller.PedidoController.SalvarPedido(novoPedido);
-                Controller.PedidoController.GuardaTelefone(novoCliente.Telefone);
+                Controller.PedidoController.SalvarPedido(novoPedido);               
               
-
                 TelaPedidoFinalizado novaTela = new TelaPedidoFinalizado();
                 novaTela.ShowDialog();
 
-                subTotal = 0.00;
-                cmbSabores.SelectedIndex = -1;
-                cmbSabores2.SelectedIndex = -1;
-                cmbSabores3.SelectedIndex = -1;
-                cbAzeitona.IsChecked = false;
-                cbCheddar.IsChecked = false;
-                cbBacon.IsChecked = false;
-                cbBorda.IsChecked = false;
-                ListView1.Items.Clear();
-                itemList = new List<Item>();
-                blockNome.Text=null;
-                blockFone.Text = null;
-                blockEnd.Text = null;
-                blockNr.Text = null;
-                blockBairro.Text = null;
-                txtTelefone.Text = null;
-                rbP.IsChecked = true;
-                txtTotal.Text = null;
+                limparCampos();
 
             }
             catch (Exception)
@@ -328,11 +310,45 @@ namespace Pizzaria
             return false;
         }
 
-        //EDITA ITEM DA LISTA ATUAL
-        public static void editarItem(Item itemEditado)
+       //LIMPA OS CAMPOS DA TELA DE PEDIDO
+        public void limparCampos()
         {
+            subTotal = 0.00;
+            cmbSabores.SelectedIndex = -1;
+            cmbSabores2.SelectedIndex = -1;
+            cmbSabores3.SelectedIndex = -1;
+            cbAzeitona.IsChecked = false;
+            cbCheddar.IsChecked = false;
+            cbBacon.IsChecked = false;
+            cbBorda.IsChecked = false;
+            ListView1.Items.Clear();
+            itemList = new List<Item>();
+            blockNome.Text = null;
+            blockFone.Text = null;
+            blockEnd.Text = null;
+            blockNr.Text = null;
+            blockBairro.Text = null;
+            txtTelefone.Text = null;
+            rbP.IsChecked = true;
+            txtTotal.Text = null;
         }
 
+        //EVENTO NO TEXTBOX DE PESQUISAR TELEFONE QUE RECONHECE A TECLA ENTER, DISPARA O EVENTO DO BOTÃO "PESQUISAR TELEFONE AO PRESSIONAR 'ENTER' "
+        private void txtTelefone_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.Enter))
+            {
+                btnPesquisaTel_Click(this, new RoutedEventArgs());
+            }
+        }
+        // EVENTO QUE FECHA A JANELA AO PRESSIONAR A TECLA "ESC"
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.Escape))
+            {
+                btnFechar_Click(this, new RoutedEventArgs());
+            }
+        }
     }
 
 }
