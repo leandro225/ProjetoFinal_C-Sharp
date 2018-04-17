@@ -73,6 +73,9 @@
     <Compile Include="CadastroPizza.xaml.cs">
       <DependentUpon>CadastroPizza.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditarCliente.xaml.cs">
+      <DependentUpon>EditarCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TelaCliente.xaml.cs">
       <DependentUpon>TelaCliente.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CadastroPizza.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditarCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

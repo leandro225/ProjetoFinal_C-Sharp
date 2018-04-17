@@ -89,34 +89,20 @@ namespace Pizzaria
             {
 
                 CellValue = int.Parse(DtGrid.SelectedValue.ToString());
-                txtEditarItem.Visibility = Visibility.Visible;
-                btnSalvarAlt.Visibility = Visibility.Visible;
-                txtEditarItem.Text = Controller.ClienteController.retornaDescricao(CellValue);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Por Favor, Selecione um item!!");
-            }
-
-
-        }
-        private void btnSalvarAlt_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Controller.ClienteController.alterarDados(CellValue, txtEditarItem.Text);
+                Controller.ClienteController.SalvaUltimoCliente(CellValue);
+                EditarCliente telaEditar = new EditarCliente();
+                telaEditar.ShowDialog();
                 DtGrid.Items.Refresh();
-                txtEditarItem.Visibility = Visibility.Hidden;
-                btnSalvarAlt.Visibility = Visibility.Hidden;
-
+                
             }
             catch (Exception)
             {
                 MessageBox.Show("Por Favor, Selecione um item!!");
-
             }
 
+
         }
+        
 
     
     }

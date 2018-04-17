@@ -12,6 +12,7 @@ namespace Controller
     {
         public static List<Cliente> Clientes = new List<Cliente>();
         static int ultimoID = 0;
+        public static Cliente clienteSelecionado = new Cliente();
 
         public static void SalvarCliente(Cliente novoCli)
         {
@@ -54,26 +55,37 @@ namespace Controller
             }
             return null;
         }
-        public static string retornaDescricao(int id)
+        public static void SalvaUltimoCliente(int id)
         {
             foreach (var item in Clientes)
             {
                 if (id == item.ClienteID)
                 {
-                    return item.Nome;
+                    clienteSelecionado = item;
                 }
             }
-            return null;
+        
         }
-        public static void alterarDados(int id, string novaDesc)
+        public static void alterarDados(Cliente cli)
         {
             foreach (var x in Clientes)
             {
-                if (x.ClienteID == id)
+                if (x.ClienteID == cli.ClienteID)
                 {
-                    x.Nome = novaDesc;
+                    
+                    x.Nome = cli.Nome;
+                    x.Endereco = cli.Endereco;
+                    x.Numero = cli.Numero;
+                    x.Telefone = cli.Telefone;
+                    x.Bairro = cli.Bairro;
+
+                    
+
+
                 }
+                
             }
+            
         }
         public static List<Cliente> retornaClientes()
         {
