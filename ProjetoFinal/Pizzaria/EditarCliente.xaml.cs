@@ -49,20 +49,28 @@ namespace Pizzaria
 
         private void btnSalvarAlt_Click(object sender, RoutedEventArgs e)
         {
-            //recebe os dados de todos os campos
-            exibirCliente.Nome = txtNome.Text.ToString();
-            exibirCliente.Telefone = int.Parse(txtTelefone.Text);
-            exibirCliente.Endereco = txtEnd.Text.ToString();
-            exibirCliente.Numero = int.Parse(txtNumero.Text);
-            exibirCliente.Bairro = txtBairro.Text.ToString();
+            if (txtNome.Text.Equals("")|| txtBairro.Text.Equals("") || txtEnd.Text.Equals("") ||txtTelefone.Text.Equals(value: "") || txtNumero.Text.Equals(value: ""))
+            {
+                MessageBox.Show("Preencha Todos Os Campos!!!");
+            }
+            else
+            {
 
-            // envia para controller as alteracos 
-            Controller.ClienteController.alterarDados(exibirCliente);
 
-            MessageBox.Show("Alterações Feitas Com Sucesso!!!");
+                //recebe os dados de todos os campos
+                exibirCliente.Nome = txtNome.Text.ToString();
+                exibirCliente.Telefone = int.Parse(txtTelefone.Text);
+                exibirCliente.Endereco = txtEnd.Text.ToString();
+                exibirCliente.Numero = int.Parse(txtNumero.Text);
+                exibirCliente.Bairro = txtBairro.Text.ToString();
 
-            this.Close();
+                // envia para controller as alteracos 
+                Controller.ClienteController.alterarDados(exibirCliente);
 
+                MessageBox.Show("Alterações Feitas Com Sucesso!!!");
+
+                this.Close();
+            }
         }
     }
 }
