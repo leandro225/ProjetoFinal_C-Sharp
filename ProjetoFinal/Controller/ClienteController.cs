@@ -20,9 +20,10 @@ namespace Controller
             ultimoID = id;
             novoCli.ClienteID = id;
             Clientes.Add(novoCli);
-            // Contexto ctx = new Contexto();
-            // ctx.Clientes.Add(novoCli);
-            // ctx.SaveChanges();
+
+            //Contexto ctx = new Contexto();
+           // ctx.Clientes.Add(novoCli);
+           // ctx.SaveChanges();
         }
         //public static Cliente PesquisaCliPorTel(int tel)
         // {
@@ -96,7 +97,7 @@ namespace Controller
 
         // exemplo  public Cliente PesquisarId(int Cliente)
         //{
-        //Contexto ctx = new Contexto();
+        // Contexto ctx = new Contexto();
         // return ctx.Clientes.Find(idCliente);
         //}
 

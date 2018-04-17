@@ -40,9 +40,7 @@ namespace Pizzaria
                 cmbSabores.Items.Add(x.SaborPizza);
                 cmbSabores2.Items.Add(x.SaborPizza);
                 cmbSabores3.Items.Add(x.SaborPizza);
-            }
-
-            
+            }           
         }
 
 
@@ -341,6 +339,7 @@ namespace Pizzaria
                 btnPesquisaTel_Click(this, new RoutedEventArgs());
             }
         }
+
         // EVENTO QUE FECHA A JANELA AO PRESSIONAR A TECLA "ESC"
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {

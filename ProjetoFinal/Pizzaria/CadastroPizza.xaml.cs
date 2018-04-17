@@ -20,11 +20,13 @@ namespace Pizzaria
     /// </summary>
     public partial class CadastroPizza : Window
     {
+        public static List<Pizza> novaLista = new List<Pizza>();
         public CadastroPizza()
         {
-            InitializeComponent();           
+            InitializeComponent();   
+            novaLista= Controller.PizzaController.retornaSabores();
             DtGrid.ItemsSource = null;
-            DtGrid.ItemsSource = Controller.PizzaController.retornaSabores();
+            DtGrid.ItemsSource = novaLista;
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
@@ -44,7 +46,9 @@ namespace Pizzaria
 
                 novoSabor.SaborPizza = txtNovoSabor.Text;
                 Controller.PizzaController.SalvarNovoSabor(novoSabor);
-                DtGrid.Items.Refresh();
+                DtGrid.ItemsSource = null;
+                DtGrid.ItemsSource= Controller.PizzaController.retornaSabores();
+                // DtGrid.Items.Refresh();
                 MessageBox.Show("Novo Sabor Cadastrado com sucesso", "Sucesso!", MessageBoxButton.OK);
                 txtNovoSabor.Clear();
             }
@@ -74,14 +78,16 @@ namespace Pizzaria
         {
             try
             {
-               // CellValue = int.Parse(DtGrid.SelectedValue.ToString());              
-                txtEditarItem.Text = Controller.PizzaController.retornaDescricao(int.Parse(DtGrid.SelectedValue.ToString()));
+                // CellValue = int.Parse(DtGrid.SelectedValue.ToString());
+                Pizza nova = new Pizza();
+                nova = Controller.PizzaController.retornaDescricao(int.Parse(DtGrid.SelectedValue.ToString()));
+                txtEditarItem.Text = nova.SaborPizza.ToString();
                 txtEditarItem.Visibility = Visibility.Visible;
                 btnSalvarAlt.Visibility = Visibility.Visible;
             }
             catch (Exception)
             {
-                MessageBox.Show("Por Favor, Selecione um item!!","Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Por Favor, Selecione um item!!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -90,7 +96,7 @@ namespace Pizzaria
             try
             {
                 Controller.PizzaController.alterarDados(int.Parse(DtGrid.SelectedValue.ToString()), txtEditarItem.Text);
-                DtGrid.Items.Refresh();
+                DtGrid.ItemsSource= Controller.PizzaController.retornaSabores();
                 txtEditarItem.Visibility = Visibility.Hidden;
                 btnSalvarAlt.Visibility = Visibility.Hidden;
             }
@@ -99,19 +105,8 @@ namespace Pizzaria
                 MessageBox.Show("Por Favor, Selecione um item!!");
 
             }
-            //pega o valor selecionado da grid de acordo com o index 
-            // private void DtGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-            // {
-            // DataGrid dataGrid = sender as DataGrid;
-            // DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
-            // DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
-            // CellValue = int.Parse(((TextBlock)RowColumn.Content).Text);
-            // MessageBox.Show(CellValue.ToString());
-            // CellValue = int.Parse(DtGrid.SelectedValue.ToString());
-            // }
         }
-
-        private void txtNovoSabor_KeyDown(object sender, KeyEventArgs e)
+            private void txtNovoSabor_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.Enter))
             {
@@ -119,12 +114,14 @@ namespace Pizzaria
             }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
+            private void Window_KeyDown(object sender, KeyEventArgs e)
+            {
             if (Keyboard.IsKeyDown(Key.Escape))
             {
                 btnFechar_Click(this, new RoutedEventArgs());
             }
         }
+
     }
 }
+    
