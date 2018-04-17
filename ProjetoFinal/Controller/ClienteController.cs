@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 namespace Controller
 {
     public class ClienteController
-    {
-        public static List<Cliente> Clientes = new List<Cliente>();
-        static int ultimoID = 0;
+    {           
         public static Cliente clienteSelecionado = new Cliente();
+
+        // Métodos
 
         public static void SalvarCliente(Cliente novoCli)
         {
-
             //int id = ultimoID + 1;
             //ultimoID = id;
             //novoCli.ClienteID = id;
@@ -26,13 +25,7 @@ namespace Controller
             ctx.Clientes.Add(novoCli);
             ctx.SaveChanges();
         }
-        //public static Cliente PesquisaCliPorTel(int tel)
-        // {
-        // Contexto ctx = new Contexto();
-        // return ctx.Clientes.Find(tel);
-        // }
-
-
+        
         public static Cliente PesquisaCliPorTel(int tel)
         {
             Contexto ctx = new Contexto();
@@ -47,32 +40,15 @@ namespace Controller
             }
             return null;
 
-
-
-            //foreach (var x in Clientes)
-            //{
-            //    if (x.Telefone == tel)
-            //    {
-            //        return x;
-            //    }
-            //}
-            //return null;
         }
+
         public static void SalvaUltimoCliente(int id)
         {
             Contexto ctx = new Contexto();
             clienteSelecionado= ctx.Clientes.Find(id);
-
-
-            //foreach (var item in Clientes)
-            //{
-            //    if (id == item.ClienteID)
-            //    {
-            //        clienteSelecionado = item;
-            //    }
-            //}
-        
+       
         }
+
         public static void alterarDados(Cliente cli)
         {
 
@@ -86,23 +62,14 @@ namespace Controller
             x.Bairro = cli.Bairro;
             ctx.SaveChanges();
 
-            //foreach (var x in Clientes)
-            //{
-            //    if (x.ClienteID == cli.ClienteID)
-            //    {
-                   
-
-            //    }
-                
-            //}
-            
+           
         }
+
         public static List<Cliente> retornaClientes()
         {
             Contexto ctx = new Contexto();
             return ctx.Clientes.ToList();
         }
-
 
         public static bool ExcluirCliente(int id)
         {
@@ -113,41 +80,14 @@ namespace Controller
             ctx.Entry(c).State = System.Data.Entity.EntityState.Deleted;
             ctx.SaveChanges();
             return true;
-
-            //foreach (var cliente in new List<Cliente>(Clientes))
-            //{
-            //    if (cliente.ClienteID == id)
-            //    {
-
-            //        Clientes.Remove(cliente);
-            //        return true;
-            //    }
-
-            //}
-            //return false;
         }
 
+        public static Cliente retornaClientePorId(int id)
+        {
+            Contexto ctx = new Contexto();
+            Cliente c = ctx.Clientes.Find(id);
+            return c;
+        }
 
-        // exemplo  public Cliente PesquisarId(int Cliente)
-        //{
-        // Contexto ctx = new Contexto();
-        // return ctx.Clientes.Find(idCliente);
-        //}
-
-        //exemplo retorna listar public List<Cliente>ListarClientes()
-        //{
-        //   Contexto ctx = new Contexto();
-        // return ctx.Clientes.ToList();
-        //}
-
-        ///excluir public static bool ExcluirClientes(int telefone)
-        /// {
-        //  Contexto ctx = new Contexto();
-        //  Cliente c = ctx.Clientes.Find(telefone);
-
-        //  ctx.Entry(c).State = System.Data.Entity.EntityState.Deleted;
-        //  ctx.SaveChanges();
-        //  return true;
-        // }
     }
 }

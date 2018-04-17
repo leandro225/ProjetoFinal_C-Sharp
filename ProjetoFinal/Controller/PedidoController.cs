@@ -11,10 +11,9 @@ namespace Controller
     public class PedidoController
     {
         public static int UltimoTelefone = 0;
-       // static int ultimoID = 0;
-       // public static List<Pedido> pedidos = new List<Pedido>();
         public static Pedido ultimoPedido = new Pedido();
        
+        //Métodos
 
         public static void SalvarPedido(Pedido novoPedido)
         {
@@ -34,6 +33,7 @@ namespace Controller
         {
             UltimoTelefone = telefone;
         }
+
         //Retorna o telefone digitado no campo de pesquisa
         public static string RetornaTelefone()
         {

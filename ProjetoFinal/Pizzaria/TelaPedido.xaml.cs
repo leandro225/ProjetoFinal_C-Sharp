@@ -78,27 +78,27 @@ namespace Pizzaria
         // BOTÃO FINALIZAR PEDIDO
         private void btnFinalizar_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
                 Pedido novoPedido = new Pedido();
-                Cliente novoCliente = new Cliente();
-
-                novoCliente.Nome= blockNome.Text;
-                novoCliente.Telefone = int.Parse(blockFone.Text);
-                novoCliente.Endereco = blockEnd.Text;
-                novoCliente.Numero = int.Parse(blockNr.Text);
-                novoCliente.Bairro = blockBairro.Text;
-
-            novoPedido.Cli = novoCliente;
+                
+                novoPedido.clienteId = int.Parse(blockId.Text);
+                
                 novoPedido.DataPedido = DateTime.Now.ToString();
 
                 novoPedido.Total = double.Parse(txtTotal.Text);
                 novoPedido.ListaItens = itemList;
-                Controller.PedidoController.SalvarPedido(novoPedido);               
-              
+                Controller.PedidoController.SalvarPedido(novoPedido);
+
                 TelaPedidoFinalizado novaTela = new TelaPedidoFinalizado();
                 novaTela.ShowDialog();
 
                 limparCampos();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Por favor, preencha os dados do Cliente!!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
            
             
@@ -187,6 +187,7 @@ namespace Pizzaria
                 else
                 {
                     // Caso o cliente já esteja cadastrado, as informações aparecerão na tela
+                    blockId.Text = Recep.ClienteID.ToString();
                     blockNome.Text = Recep.Nome;
                     blockFone.Text = Recep.Telefone.ToString();
                     blockEnd.Text = Recep.Endereco;
@@ -201,7 +202,7 @@ namespace Pizzaria
 
         }
 
-        // BOTÃO DE EDIÇÃO DO ITEM SELECIONADO
+        
        
 
         //**************************************  MÉTODOS ADICIONAIS ****************************************************
@@ -320,6 +321,7 @@ namespace Pizzaria
             cbBorda.IsChecked = false;
             ListView1.Items.Clear();
             itemList = new List<Item>();
+            blockId.Text = null;
             blockNome.Text = null;
             blockFone.Text = null;
             blockEnd.Text = null;

@@ -25,14 +25,15 @@ namespace Pizzaria
             InitializeComponent();
 
             Pedido recebePedido = new Pedido();
-
+            
             recebePedido = Controller.PedidoController.ultimoPedido;
+            Cliente c = Controller.ClienteController.retornaClientePorId(recebePedido.clienteId);
 
-            txtNome.Text = recebePedido.Cli.Nome;
-            txtTelefone.Text = recebePedido.Cli.Telefone.ToString();
-            txtEndereco.Text = recebePedido.Cli.Endereco;
-            txtNumero.Text = recebePedido.Cli.Numero.ToString();
-            txtBairro.Text = recebePedido.Cli.Bairro;
+            txtNome.Text = c.Nome;
+            txtTelefone.Text = c.Telefone.ToString();
+            txtEndereco.Text = c.Endereco;
+            txtNumero.Text = c.Numero.ToString();
+            txtBairro.Text = c.Bairro;
             txtTotal.Text = recebePedido.Total.ToString();
             txtCodigo.Text = recebePedido.PedidoID.ToString();
             txtData.Text = recebePedido.DataPedido;
