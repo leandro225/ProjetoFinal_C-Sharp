@@ -18,7 +18,7 @@ namespace Controller
 
         public static void SalvarPedido(Pedido novoPedido)
         {
-            //ultimoPedido = novoPedido; //guarda as informações do último pedido realizado para ser usado na tela de Pedido Finalizado
+            ultimoPedido = novoPedido; //guarda as informações do último pedido realizado para ser usado na tela de Pedido Finalizado
             //int id = ultimoID + 1;
             //ultimoID = id;
             //novoPedido.PedidoID = ultimoID;

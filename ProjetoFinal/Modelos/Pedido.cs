@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 
 namespace Modelos
 {
+   
     public class Pedido
     {
-        
+      
+       
+
         public int PedidoID { get; set; }
 
         public string DataPedido { get; set; }
 
-        public Cliente Cliente { get; set; }
+        public Cliente Cli { get; set; }
 
         public double Total { get; set; }
 
         public List<Item> ListaItens { get; set; }
 
 
-
+        
 
 
     }

@@ -28,11 +28,11 @@ namespace Pizzaria
 
             recebePedido = Controller.PedidoController.ultimoPedido;
 
-            txtNome.Text = recebePedido.Cliente.Nome;
-            txtTelefone.Text = recebePedido.Cliente.Telefone.ToString();
-            txtEndereco.Text = recebePedido.Cliente.Endereco;
-            txtNumero.Text = recebePedido.Cliente.Numero.ToString();
-            txtBairro.Text = recebePedido.Cliente.Bairro;
+            txtNome.Text = recebePedido.Cli.Nome;
+            txtTelefone.Text = recebePedido.Cli.Telefone.ToString();
+            txtEndereco.Text = recebePedido.Cli.Endereco;
+            txtNumero.Text = recebePedido.Cli.Numero.ToString();
+            txtBairro.Text = recebePedido.Cli.Bairro;
             txtTotal.Text = recebePedido.Total.ToString();
             txtCodigo.Text = recebePedido.PedidoID.ToString();
             txtData.Text = recebePedido.DataPedido;

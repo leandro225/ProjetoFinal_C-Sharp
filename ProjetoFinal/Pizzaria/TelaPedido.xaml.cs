@@ -78,14 +78,17 @@ namespace Pizzaria
         // BOTÃO FINALIZAR PEDIDO
         private void btnFinalizar_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            
                 Pedido novoPedido = new Pedido();
                 Cliente novoCliente = new Cliente();
 
-                novoCliente = Controller.ClienteController.PesquisaCliPorTel(int.Parse(blockFone.Text));
+                novoCliente.Nome= blockNome.Text;
+                novoCliente.Telefone = int.Parse(blockFone.Text);
+                novoCliente.Endereco = blockEnd.Text;
+                novoCliente.Numero = int.Parse(blockNr.Text);
+                novoCliente.Bairro = blockBairro.Text;
 
-                novoPedido.Cliente = novoCliente;
+            novoPedido.Cli = novoCliente;
                 novoPedido.DataPedido = DateTime.Now.ToString();
 
                 novoPedido.Total = double.Parse(txtTotal.Text);
@@ -97,12 +100,8 @@ namespace Pizzaria
 
                 limparCampos();
 
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Por Favor, Preencha os dados do Cliente", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+           
+            
             
           
 
