@@ -77,11 +77,14 @@ namespace Pizzaria
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
             try
-            {
-                // CellValue = int.Parse(DtGrid.SelectedValue.ToString());
+            {               
                 Pizza nova = new Pizza();
                 nova = Controller.PizzaController.retornaDescricao(int.Parse(DtGrid.SelectedValue.ToString()));
                 txtEditarItem.Text = nova.SaborPizza.ToString();
+                txtNovoSabor.IsEnabled = false;
+                btnCadSabor.IsEnabled = false;
+                btnExcluir.IsEnabled = false;
+
                 txtEditarItem.Visibility = Visibility.Visible;
                 btnSalvarAlt.Visibility = Visibility.Visible;
             }
@@ -97,6 +100,9 @@ namespace Pizzaria
             {
                 Controller.PizzaController.alterarDados(int.Parse(DtGrid.SelectedValue.ToString()), txtEditarItem.Text);
                 DtGrid.ItemsSource= Controller.PizzaController.retornaSabores();
+                txtNovoSabor.IsEnabled = true;
+                btnCadSabor.IsEnabled = true;
+                btnExcluir.IsEnabled =true;
                 txtEditarItem.Visibility = Visibility.Hidden;
                 btnSalvarAlt.Visibility = Visibility.Hidden;
             }
@@ -106,7 +112,8 @@ namespace Pizzaria
 
             }
         }
-            private void txtNovoSabor_KeyDown(object sender, KeyEventArgs e)
+
+        private void txtNovoSabor_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.Enter))
             {
@@ -114,8 +121,8 @@ namespace Pizzaria
             }
         }
 
-            private void Window_KeyDown(object sender, KeyEventArgs e)
-            {
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
             if (Keyboard.IsKeyDown(Key.Escape))
             {
                 btnFechar_Click(this, new RoutedEventArgs());

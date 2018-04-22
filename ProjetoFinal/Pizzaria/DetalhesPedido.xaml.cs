@@ -16,21 +16,18 @@ using System.Windows.Shapes;
 namespace Pizzaria
 {
     /// <summary>
-    /// Interaction logic for TelaPedidoFinalizado.xaml
+    /// Interaction logic for DetalhesPedido.xaml
     /// </summary>
-    public partial class TelaPedidoFinalizado : Window
+    public partial class DetalhesPedido : Window
     {
-        public TelaPedidoFinalizado()
+        public DetalhesPedido(int idPedido)
         {
             InitializeComponent();
-
-            Pedido recebePedido = new Pedido();
-            
-            recebePedido = Controller.PedidoController.ultimoPedido;
-            
+            Pedido recebePedido= Controller.PedidoController.retornaPedidoPorId(idPedido);
+           // List<Item> lista = Controller.ItemController.PesquisaItemsPorIdPedido(idPedido);
             Cliente c = Controller.ClienteController.retornaClientePorId(recebePedido.clienteId);
-
-            txtNome.Text = c.Nome;
+            
+            txtNome.Text = recebePedido.cli.Nome;
             txtTelefone.Text = c.Telefone.ToString();
             txtEndereco.Text = c.Endereco;
             txtNumero.Text = c.Numero.ToString();
@@ -38,15 +35,18 @@ namespace Pizzaria
             txtTotal.Text = recebePedido.Total.ToString();
             txtCodigo.Text = recebePedido.PedidoID.ToString();
             txtData.Text = recebePedido.DataPedido;
-            listFinal.ItemsSource = recebePedido.ListaItens;
+            listFinal.ItemsSource = null;
+            listFinal.ItemsSource = recebePedido.ListaItens; 
 
-        }    
+           
 
-        private void btnFechar_Click_1(object sender, RoutedEventArgs e)
+
+
+        }
+
+        private void btnClose(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-        
     }
 }

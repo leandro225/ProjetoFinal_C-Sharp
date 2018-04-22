@@ -10,8 +10,7 @@ namespace Controller
 {
     public class ClienteController
     {           
-        public static Cliente clienteSelecionado = new Cliente();
-
+        
         // Métodos
 
         public static void SalvarCliente(Cliente novoCli)
@@ -40,13 +39,6 @@ namespace Controller
             }
             return null;
 
-        }
-
-        public static void SalvaUltimoCliente(int id)
-        {
-            Contexto ctx = new Contexto();
-            clienteSelecionado= ctx.Clientes.Find(id);
-       
         }
 
         public static void alterarDados(Cliente cli)

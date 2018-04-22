@@ -17,5 +17,8 @@ namespace Modelos
         public string Adicional { get; set; }
 
         public double Valor { get; set; }
+
+        public int PedidoID { get; set; }
+        
     }
 }

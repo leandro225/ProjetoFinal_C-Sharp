@@ -42,5 +42,11 @@ namespace Pizzaria
             TelaCliente tela = new TelaCliente();
             tela.ShowDialog();
         }
+
+        private void btnListarPedido_Click(object sender, RoutedEventArgs e)
+        {
+            TelaListarPedidos listar = new TelaListarPedidos();
+            listar.ShowDialog();
+        }
     }
 }

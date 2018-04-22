@@ -21,18 +21,16 @@ namespace Pizzaria
     public partial class TelaCliente : Window
     {
         List<Cliente> ClienteLista = new List<Cliente>();
-        int CellValue;
+        private Cliente novo = new Cliente();
 
         public TelaCliente()
         {
             InitializeComponent();
+
             ClienteLista = Controller.ClienteController.retornaClientes();
-
-            foreach (var x in ClienteLista)
-            {
-                DtGrid.Items.Add(x);
-            }
-
+            DtGrid.ItemsSource = null;
+            DtGrid.ItemsSource = ClienteLista;
+           
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
@@ -40,71 +38,109 @@ namespace Pizzaria
             this.Close();
         }
 
-        private void btnExcluir_Click(object sender, RoutedEventArgs e)
-        {
+       // private void btnExcluir_Click(object sender, RoutedEventArgs e)
+       // {
 
-            bool resp;
-            try
-            {
+           // bool resp;       
+             //  try
+                //{
+                   //resp = Controller.ClienteController.ExcluirCliente(int.Parse(DtGrid.SelectedValue.ToString()));
 
-                resp = Controller.ClienteController.ExcluirCliente(CellValue);
-
-                if (resp.Equals(true))
-                {
-                    MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
-                    int selectedIndex = DtGrid.SelectedIndex;
-                    DtGrid.Items.RemoveAt(selectedIndex);
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Por Favor, Selecione um Item !!!", "Erro", MessageBoxButton.OK);
-
-                }
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-
-
-        }
-
-        private void DtGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // DataGrid dataGrid = sender as DataGrid;
-            // DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
-            // DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
-            // CellValue = int.Parse(((TextBlock)RowColumn.Content).Text);
-            // MessageBox.Show(CellValue.ToString());
-            CellValue = int.Parse(DtGrid.SelectedValue.ToString());
-        }
+                   // if (resp==true)
+                  // {
+                       // MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                                           
+                   // }
+                   // else
+                  //  {
+                       // Controller.PedidoController.excluirPedidoPorCliente(int.Parse(DtGrid.SelectedValue.ToString()));
+                      //  MessageBox.Show("Item Excluído com Sucesso!!!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                       // DtGrid.ItemsSource = null;
+                      //  DtGrid.ItemsSource = Controller.ClienteController.retornaClientes();
+                 //}
+              // }
+              //  catch (Exception)
+              // {
+                 //   MessageBox.Show("Por Favor, Selecione um Item !!!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                   // MessageBox.Show(DtGrid.SelectedValue.ToString());
+              // }
+           
+       // }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                novo = Controller.ClienteController.retornaClientePorId(int.Parse(DtGrid.SelectedValue.ToString()));
+                txtNome.Text = novo.Nome.ToString();              
+                txtTelefone.Text = novo.Telefone.ToString();
+                txtEnd.Text = novo.Endereco;
+                txtNumero.Text = novo.Numero.ToString();
+                txtBairro.Text = novo.Bairro;
 
-                CellValue = int.Parse(DtGrid.SelectedValue.ToString());
-                Controller.ClienteController.SalvaUltimoCliente(CellValue);
-                EditarCliente telaEditar = new EditarCliente();
-                telaEditar.ShowDialog();
-                DtGrid.Items.Refresh();
-                
+                ViewBoxEdit.Visibility = Visibility.Visible;
+                btnExcluir.Visibility = Visibility.Hidden;
+               
             }
             catch (Exception)
             {
-                MessageBox.Show("Por Favor, Selecione um item!!");
+                MessageBox.Show("Por Favor, Selecione um item!!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
         }
-        
 
-    
+        private void btnSalvarAlt_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (txtNome.Text.Equals("") || txtBairro.Text.Equals("") || txtEnd.Text.Equals("") || txtTelefone.Text.Equals(value: "") || txtNumero.Text.Equals(value: ""))
+                {
+                    MessageBox.Show("Preencha Todos Os Campos!!!");
+                }
+                else
+                {
+                    //recebe os dados de todos os campos
+                    novo.Nome = txtNome.Text.ToString();
+                    novo.Telefone = int.Parse(txtTelefone.Text);
+                    novo.Endereco = txtEnd.Text.ToString();
+
+                    novo.Numero = int.Parse(txtNumero.Text);
+                    novo.Bairro = txtBairro.Text.ToString();
+
+                    // envia para controller as alteracos 
+                    Controller.ClienteController.alterarDados(novo);
+
+
+                    MessageBox.Show("Edição realizada com Sucesso!!!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DtGrid.ItemsSource = Controller.ClienteController.retornaClientes();
+                    ViewBoxEdit.Visibility = Visibility.Hidden;
+                    btnExcluir.Visibility = Visibility.Visible;
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Por favor, Preencha os campos corretamente", "Atenção", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+           
+        }
+
+       
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            ViewBoxEdit.Visibility = Visibility.Hidden;
+            btnExcluir.Visibility = Visibility.Visible;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.Escape))
+            {
+                btnFechar_Click(this, new RoutedEventArgs());
+            }
+        }
     }
 }
 

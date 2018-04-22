@@ -73,11 +73,14 @@
     <Compile Include="CadastroPizza.xaml.cs">
       <DependentUpon>CadastroPizza.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditarCliente.xaml.cs">
-      <DependentUpon>EditarCliente.xaml</DependentUpon>
+    <Compile Include="DetalhesPedido.xaml.cs">
+      <DependentUpon>DetalhesPedido.xaml</DependentUpon>
     </Compile>
     <Compile Include="TelaCliente.xaml.cs">
       <DependentUpon>TelaCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TelaListarPedidos.xaml.cs">
+      <DependentUpon>TelaListarPedidos.xaml</DependentUpon>
     </Compile>
     <Compile Include="TelaPedido.xaml.cs">
       <DependentUpon>TelaPedido.xaml</DependentUpon>
@@ -93,7 +96,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditarCliente.xaml">
+    <Page Include="DetalhesPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,6 +113,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="TelaCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TelaListarPedidos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +171,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\Clientes.png" />
+    <Resource Include="img\Clientes2.png" />
+    <Resource Include="img\contatos.png" />
     <Resource Include="img\Fechar.png" />
     <Resource Include="img\logo1.png" />
     <Resource Include="img\menu.png" />
@@ -172,7 +181,8 @@
     <Resource Include="img\team.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\Clientes2.png" />
+    <Resource Include="img\pedido.png" />
+    <Resource Include="img\pedidos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

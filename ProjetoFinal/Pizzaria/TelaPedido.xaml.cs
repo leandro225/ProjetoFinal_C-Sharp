@@ -21,9 +21,9 @@ namespace Pizzaria
     /// </summary>
     public partial class TelaPedido : Window
     {
-        static List<Pizza> ListaSabores = new List<Pizza>();
-        static List<Item> itemList = new List<Item>();
-        int ultimoId = 0;
+        List<Pizza> ListaSabores = new List<Pizza>();
+        public static List<Item> itemList = new List<Item>();
+        
         static double  subTotal = 0.00;
         
 
@@ -34,7 +34,7 @@ namespace Pizzaria
             rbP.IsChecked = true;// inicia o radio buttom de tamanho "Pequeno" como checked
 
             ListaSabores = Controller.PizzaController.retornaSabores(); // recebe a lista de sabores cadastrados
-
+            txtTelefone.Focus();
             foreach (var x in ListaSabores)  // realiza a inserção dos sabores nas combobox
             {
                 cmbSabores.Items.Add(x.SaborPizza);
@@ -87,24 +87,24 @@ namespace Pizzaria
                 novoPedido.DataPedido = DateTime.Now.ToString();
 
                 novoPedido.Total = double.Parse(txtTotal.Text);
-                novoPedido.ListaItens = itemList;
-                Controller.PedidoController.SalvarPedido(novoPedido);
-
-                TelaPedidoFinalizado novaTela = new TelaPedidoFinalizado();
-                novaTela.ShowDialog();
-
-                limparCampos();
+                
+                if (itemList.Count==0)
+                {
+                    MessageBox.Show("Favor inserir um item!!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {                    
+                        novoPedido.ListaItens = itemList;                      
+                        Controller.PedidoController.SalvarPedido(novoPedido);
+                        TelaPedidoFinalizado novaTela = new TelaPedidoFinalizado();
+                        novaTela.ShowDialog();
+                        limparCampos();                 
+                }                   
             }
             catch (Exception)
             {
-                MessageBox.Show("Por favor, preencha os dados do Cliente!!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Por Favor, preencha os campos corretamente", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-
-           
-            
-            
-          
-
         }
         
         // BOTÃO ADICIONAR ITENS
@@ -117,7 +117,7 @@ namespace Pizzaria
                 novoItem = tamanhoSelecionado(novoItem);
                 novoItem.Sabor = saborSelecionado();
                 novoItem = adicionalSelecionado(novoItem);
-                novoItem.ItemID = ultimoId += 1;
+               
 
                 ListView1.Items.Add(novoItem);              
                 itemList.Add(novoItem);

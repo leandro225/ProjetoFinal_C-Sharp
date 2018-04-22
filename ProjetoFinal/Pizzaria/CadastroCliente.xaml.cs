@@ -24,6 +24,7 @@ namespace Pizzaria
         {
             InitializeComponent();
             txtTelefone.Text = Controller.PedidoController.RetornaTelefone();
+            txtNome.Focus();
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
