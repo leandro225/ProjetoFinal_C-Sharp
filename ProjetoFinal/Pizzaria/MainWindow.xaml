@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Tela Inicial" Height="401" Width="819" WindowState="Maximized">
 
+
     <Grid Background="#FF252E3B">
         <StackPanel Background="#FF1A2028" Margin="0,44,0,0" Width="200" HorizontalAlignment="Left">
 

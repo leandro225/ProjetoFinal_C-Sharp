@@ -27,6 +27,7 @@ namespace Pizzaria
             novaLista= Controller.PizzaController.retornaSabores();
             DtGrid.ItemsSource = null;
             DtGrid.ItemsSource = novaLista;
+            txtNovoSabor.Focus();
         }
 
         private void btnFechar_Click(object sender, RoutedEventArgs e)
