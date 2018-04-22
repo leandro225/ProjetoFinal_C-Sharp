@@ -50,7 +50,7 @@ namespace Pizzaria
                 DtGrid.ItemsSource = null;
                 DtGrid.ItemsSource= Controller.PizzaController.retornaSabores();
                 // DtGrid.Items.Refresh();
-                MessageBox.Show("Novo Sabor Cadastrado com sucesso", "Sucesso!", MessageBoxButton.OK);
+                MessageBox.Show("Novo Sabor Cadastrado Com Sucesso!!!", "Sucesso!", MessageBoxButton.OK);
                 txtNovoSabor.Clear();
             }
         }
@@ -91,7 +91,7 @@ namespace Pizzaria
             }
             catch (Exception)
             {
-                MessageBox.Show("Por Favor, Selecione um item!!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Por Favor, Selecione Um Item!!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -109,7 +109,7 @@ namespace Pizzaria
             }
             catch (Exception)
             {
-                MessageBox.Show("Por Favor, Selecione um item!!");
+                MessageBox.Show("Por Favor, Selecione um Item!!");
 
             }
         }

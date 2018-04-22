@@ -45,7 +45,7 @@ namespace Pizzaria
                 novoCli.Bairro = txtBairro.Text;
 
                 Controller.ClienteController.SalvarCliente(novoCli);
-                MessageBox.Show("Cliente cadastrado com sucesso!", "Suecesso");
+                MessageBox.Show("Cliente Cadastrado Com Sucesso!!!", "Sucesso");
                 this.Close();
 
 
@@ -54,7 +54,7 @@ namespace Pizzaria
             catch (Exception)
             {
 
-                MessageBox.Show("! Favor inserir todos os dados corretamente!", "Atenção");
+                MessageBox.Show("! Favor Inserir Todos Os Dados Corretamente!", "Atenção");
             }
         }
     }

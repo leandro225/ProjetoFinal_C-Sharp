@@ -90,7 +90,7 @@ namespace Pizzaria
                 
                 if (itemList.Count==0)
                 {
-                    MessageBox.Show("Favor inserir um item!!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Favor Inserir Um Item!!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {                    
@@ -103,7 +103,7 @@ namespace Pizzaria
             }
             catch (Exception)
             {
-                MessageBox.Show("Por Favor, preencha os campos corretamente", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Por Favor, Preencha Os Campos Corretamente", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         
@@ -134,7 +134,7 @@ namespace Pizzaria
             }
             catch (Exception)
             {
-                MessageBox.Show("Por Favor, Selecione o sabor !!!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Por Favor, Selecione Um Sabor !!!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
             }         
         }
 
@@ -147,19 +147,19 @@ namespace Pizzaria
                 bool resp = removeItem(idSelecionado); //passa o ID do item selecionado para remoção
                 if (resp.Equals(true))
                 {
-                    MessageBox.Show("Item Removido com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
+                    MessageBox.Show("Item Removido Com Sucesso!!!", "Sucesso", MessageBoxButton.OK);
                     txtTotal.Text = subTotal.ToString();
                     int selectedIndex = ListView1.SelectedIndex;
                     ListView1.Items.RemoveAt(selectedIndex);
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, Selecione um item ", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Por Favor, Selecione Um Item ", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Por favor, Selecione um item ", "Erro", MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Por Favor, Selecione Um Item ", "Erro", MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 
@@ -179,7 +179,7 @@ namespace Pizzaria
 
                 if (Recep == null)
                 {
-                    MessageBox.Show("Cliente não Cadastrado", "Informação", MessageBoxButton.OK);
+                    MessageBox.Show("Cliente Não Cadastrado", "Informação", MessageBoxButton.OK);
                     Controller.PedidoController.GuardaTelefone(int.Parse(txtTelefone.Text));
                     CadastroCliente tela = new CadastroCliente();
                     tela.ShowDialog();
@@ -197,7 +197,7 @@ namespace Pizzaria
             }
             catch (Exception)
             {
-                MessageBox.Show("Por Favor, Insira o Telefone", "Informação", MessageBoxButton.OK);
+                MessageBox.Show("Por Favor, Insira O Telefone", "Informação", MessageBoxButton.OK);
             }
 
         }

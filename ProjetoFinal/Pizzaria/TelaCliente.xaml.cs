@@ -84,7 +84,7 @@ namespace Pizzaria
             }
             catch (Exception)
             {
-                MessageBox.Show("Por Favor, Selecione um item!!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Por Favor, Selecione Um Item!!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
@@ -112,7 +112,7 @@ namespace Pizzaria
                     Controller.ClienteController.alterarDados(novo);
 
 
-                    MessageBox.Show("Edição realizada com Sucesso!!!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Edição Realizada Com Sucesso!!!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
                     DtGrid.ItemsSource = Controller.ClienteController.retornaClientes();
                     ViewBoxEdit.Visibility = Visibility.Hidden;
                     //btnExcluir.Visibility = Visibility.Visible;
@@ -121,7 +121,7 @@ namespace Pizzaria
             }
             catch (Exception)
             {
-                MessageBox.Show("Por favor, Preencha os campos corretamente", "Atenção", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Por Favor, Preencha Os Campos Corretamente", "Atenção", MessageBoxButton.OK, MessageBoxImage.Information);
             }
            
         }
