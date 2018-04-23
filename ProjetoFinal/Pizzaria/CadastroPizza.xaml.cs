@@ -52,6 +52,7 @@ namespace Pizzaria
                 // DtGrid.Items.Refresh();
                 MessageBox.Show("Novo Sabor Cadastrado Com Sucesso!!!", "Sucesso!", MessageBoxButton.OK);
                 txtNovoSabor.Clear();
+                txtNovoSabor.Focus();
             }
         }
 
@@ -88,6 +89,7 @@ namespace Pizzaria
 
                 txtEditarItem.Visibility = Visibility.Visible;
                 btnSalvarAlt.Visibility = Visibility.Visible;
+               
             }
             catch (Exception)
             {
@@ -106,6 +108,7 @@ namespace Pizzaria
                 btnExcluir.IsEnabled =true;
                 txtEditarItem.Visibility = Visibility.Hidden;
                 btnSalvarAlt.Visibility = Visibility.Hidden;
+               
             }
             catch (Exception)
             {
